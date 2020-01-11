@@ -9,7 +9,38 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
-/* @var $app OP\UNIT\App */
+/** namespace
+ *
+ */
+namespace OP;
 
-D( require_once('test.php') );
-D( require_once('test.php') );
+/* @var $app UNIT\App */
+
+//	...
+foreach( glob( ConvertPath('unit:/').'*', GLOB_ONLYDIR ) as $path ){
+	//	...
+	$name = basename($path);
+	$unit = Unit::Singleton($name);
+	$io   = method_exists($unit, 'Selftest');
+
+	//	...
+	if( $io ){
+		$list[] = $name;
+	}
+}
+
+//	...
+$root = ConvertURL('develop:/selftest/');
+
+?>
+<?php if( $list ?? null ): ?>
+<section>
+[
+	<?php foreach( $list as $name ): ?>
+	<span class="menu"><a href="<?= $root . $name ?>"><?= $name ?></a></span>
+	<?php endforeach; ?>
+]
+</section>
+<?php else: ?>
+<p style="margin: 1em;">No unit has a self-test method.</p>
+<?php endif; ?>
