@@ -12,9 +12,6 @@
 $args = $app->Args();
 
 //	...
-$app->Template('common.php');
-
-//	...
 $path = null;
 
 //	...
