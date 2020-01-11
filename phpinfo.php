@@ -10,7 +10,4 @@
  */
 
 //	...
-D(ini_get('PHP_INI_SCAN_DIR'));
-
-//	...
 phpinfo();
