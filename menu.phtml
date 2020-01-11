@@ -1,0 +1,30 @@
+<?php
+/**
+ * module-develop:/menu.phtml
+ *
+ * @created   2020-01-11
+ * @version   1.0
+ * @package   module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ * @created   2020-01-11
+ */
+namespace OP;
+
+/* @var $app UNIT\App */
+
+//	...
+$root = ConvertURL('develop:/');
+
+?>
+<section>
+[
+	<?php foreach( array_merge(['phpinfo'], glob('*', GLOB_ONLYDIR)) as $name ): ?>
+	<span class="menu"><a href="<?= $root . $name ?>"><?= $name ?></a></span>
+	<?php endforeach; ?>
+]
+</section>
