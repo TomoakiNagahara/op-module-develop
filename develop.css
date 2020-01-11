@@ -1,0 +1,14 @@
+/**
+ * module-develop:/develop.css
+ *
+ * @created   2018-11-01
+ * @version   1.0
+ * @package   module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+#develop .menu:not(:last-child):after {
+	margin-left:  0.3em;
+	content: "|";
+}
