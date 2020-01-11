@@ -1,0 +1,28 @@
+<?php
+/**
+ * module-develop:/index.phtml
+ *
+ * @created   2020-01-11
+ * @version   1.0
+ * @package   module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ * @created   2020-01-11
+ */
+namespace OP;
+
+/* @var $app UNIT\App */
+
+?>
+<section>
+	<div id="develop">
+		<?php
+		$app->Template('menu.phtml');
+		$app->Template('controller.php');
+		?>
+	</div>
+</section>
