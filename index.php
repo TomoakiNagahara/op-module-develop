@@ -8,16 +8,28 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-/* @var $app OP\UNIT\App */
+
+/** namespace
+ *
+ * @created   2020-01-11
+ */
+namespace OP;
+
+/* @var $app UNIT\App */
 
 //	...
-if(!OP\Env::isAdmin() ){
+if(!Env::isAdmin() ){
 	return;
 };
 
 //	...
-if( $_GET['phpinfo'] ?? null ){
-	$app->Template('phpinfo.php');
-}else{
-	$app->Template('controller.php');
-}
+RootPath('develop', dirname($app->EndPoint()));
+
+//	...
+$app->WebPack(__DIR__.'/develop.css');
+
+//	...
+$app->Title('develop');
+
+//	...
+$app->Template('index.phtml');
