@@ -18,15 +18,21 @@ namespace OP;
 
 //	...
 foreach( glob( ConvertPath('unit:/').'*', GLOB_ONLYDIR ) as $path ){
-	//	...
+	//	Get unit name.
 	$name = basename($path);
-	$unit = Unit::Singleton($name);
-	$io   = method_exists($unit, 'Selftest');
 
-	//	...
-	if( $io ){
-		$list[] = $name;
-	}
+	//	Load unit.
+	if(!Unit::Load($name) ){
+		continue;
+	};
+
+	//	Check method exists.
+	if(!method_exists("\OP\UNIT\\{$name}",'Selftest') ){
+		continue;
+	};
+
+	//	Add menu list.
+	$list[] = $name;
 }
 
 //	...
