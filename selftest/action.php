@@ -50,3 +50,11 @@ $root = ConvertURL('develop:/selftest/');
 <?php else: ?>
 <p style="margin: 1em;">No unit has a self-test method.</p>
 <?php endif; ?>
+<?php
+//	...
+if(!$name = $app->Args()[1] ?? null ){
+	return;
+}
+
+//	...
+Unit::Singleton($name)->Selftest();
