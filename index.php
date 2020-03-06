@@ -23,7 +23,7 @@ if(!Env::isAdmin() ){
 };
 
 //	...
-RootPath('develop', dirname($app->EndPoint()));
+RootPath('develop', dirname(Unit('Router')->EndPoint()));
 
 //	...
 $app->WebPack(__DIR__.'/develop.css');
