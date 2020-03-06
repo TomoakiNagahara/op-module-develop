@@ -26,6 +26,11 @@ if(!Env::isAdmin() ){
 RootPath('develop', dirname(Unit('Router')->EndPoint()));
 
 //	...
+if( $layout = Env::Get('develop')['layout'] ?? 'white' ){
+	$app->Layout($layout);
+}
+
+//	...
 $app->WebPack(__DIR__.'/develop.css');
 
 //	...
