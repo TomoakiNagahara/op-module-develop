@@ -17,6 +17,9 @@ namespace OP;
 /* @var $app UNIT\App */
 
 //	...
+$list = [];
+
+//	...
 foreach( glob( ConvertPath('unit:/').'*', GLOB_ONLYDIR ) as $path ){
 	//	Get unit name.
 	$name = basename($path);
