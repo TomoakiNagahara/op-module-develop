@@ -60,4 +60,4 @@ if(!$name = $app->Args()[1] ?? null ){
 }
 
 //	...
-Unit::Singleton($name)->Selftest();
+Unit($name)->Selftest();
