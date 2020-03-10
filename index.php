@@ -19,6 +19,7 @@ namespace OP;
 
 //	...
 if(!Env::isAdmin() ){
+	echo $_SERVER['REMOTE_ADDR'];
 	return;
 };
 
