@@ -17,32 +17,13 @@ namespace OP;
 /* @var $app UNIT\App */
 
 //	...
-$list = [];
-
-//	...
-foreach( glob( ConvertPath('unit:/').'*', GLOB_ONLYDIR ) as $path ){
-	//	Get unit name.
-	$name = basename($path);
-
-	//	Load unit.
-	if(!Unit::Load($name) ){
-		continue;
-	};
-
-	//	Check method exists.
-	if(!method_exists("\OP\UNIT\\{$name}",'Selftest') ){
-		continue;
-	};
-
-	//	Add menu list.
-	$list[] = $name;
-}
-
-//	...
 $root = ConvertURL('develop:/selftest/');
 
+//	...
+$args = Unit('Router')->Args();
+
 ?>
-<?php if( $list ?? null ): ?>
+<?php if( $list = include('list.php') ): ?>
 <section>
 [
 	<?php foreach( $list as $name ): ?>
