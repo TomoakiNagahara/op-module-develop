@@ -44,4 +44,8 @@ if(!$name = $args[1] ?? null ){
 }
 
 //	...
-Unit($name)->Selftest();
+if( file_exists( $path = ConvertPath("asset:/unit/{$name}/selftest/config.php") ) ){
+	Unit('Selftest')->Auto($path);
+}else{
+	Unit($name)->Selftest();
+}
