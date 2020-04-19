@@ -36,7 +36,10 @@ $args = Unit('Router')->Args();
 <?php endif; ?>
 <?php
 //	...
-if(!$name = $app->Args()[1] ?? null ){
+if(!$name = $args[1] ?? null ){
+	echo '<pre>';
+	include('README.md');
+	echo '</pre>';
 	return;
 }
 
