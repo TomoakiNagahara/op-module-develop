@@ -23,7 +23,7 @@ foreach( glob( ConvertPath('unit:/').'*', GLOB_ONLYDIR ) as $path ){
 	$name = basename($path);
 
 	//	Check selftest directory.
-	if( file_exists( ConvertPath("asset:/unit/{$name}/selftest/config.php") ) ){
+	if( file_exists( ConvertPath("asset:/unit/{$name}/selftest/config.php", false) ) ){
 		//	...
 		$list[] = $name;
 		continue;
