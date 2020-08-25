@@ -1,10 +1,9 @@
 <?php
-/**
- * module-develop:/selftest/list.php
+/** op-module-develop:/selftest/list.php
  *
  * @created   2020-04-17
  * @version   1.0
- * @package   module-develop
+ * @package   op-module-develop
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
