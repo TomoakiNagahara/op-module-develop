@@ -22,6 +22,11 @@ foreach( glob( ConvertPath('asset:/unit/').'*', GLOB_ONLYDIR ) as $path ){
 	//	Get unit name.
 	$name = basename($path);
 
+	//	Skip ignore directory.
+	if( $name[0] === '_' ){
+		continue;
+	}
+
 	//	Check selftest directory.
 	if( file_exists( ConvertPath("asset:/unit/{$name}/selftest/config.php", false) ) ){
 		//	...
