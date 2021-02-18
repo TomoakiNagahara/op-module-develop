@@ -8,8 +8,19 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-/* @var $app OP\UNIT\App */
-$args = $app->Args();
+
+/** namespace
+ *
+ */
+namespace OP;
+
+/** Load
+ *
+ */
+Load('Args');
+
+//	...
+$args = Args();
 
 //	...
 $path = null;
@@ -20,22 +31,62 @@ while( $arg = array_shift($args) ){
 	$path .= $arg;
 
 	//	...
+	if( file_exists("{$path}.php") ){
+		CurrentDirectory($path);
+	}else{
+		UnitDirectory();
+		return;
+	}
+};
+
+/** Current develop directory.
+ *
+ * @param  string $path
+ */
+function CurrentDirectory($path)
+{
+	//	...
 	if( file_exists($temp = "{$path}.php") ){
-		$app->Template($temp);
+		Template($temp);
 	};
 
 	//	...
 	if( file_exists($temp = "{$path}/common.php") ){
-		$app->Template($temp);
+		Template($temp);
 	};
 
 	//	...
 	if( file_exists($temp = "{$path}/menu.phtml") ){
-		$app->Template($temp);
+		Template($temp);
 	};
 
 	//	...
 	if( file_exists($temp = "{$path}/action.php") ){
-		$app->Template($temp);
+		Template($temp);
 	};
-};
+}
+
+/** Unit develop directory.
+ *
+ */
+function UnitDirectory()
+{
+	//	...
+	Template('menu_unit.phtml');
+
+	//	...
+	$args = Args();
+	$unit = array_shift($args);
+	$root = ConvertPath('asset:/unit').$unit.'/develop/';
+
+	D($unit, $root, $args);
+
+	//	...
+	if( file_exists($path = join('/',$args).'/action.php') ){
+		Template($path);
+	}else
+	if( file_exists($path = join('/',$args).'.php') ){
+
+	}
+	D($path);
+}
