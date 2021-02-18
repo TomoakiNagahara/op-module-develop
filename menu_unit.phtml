@@ -1,0 +1,66 @@
+<?php
+/** op-module-develop:/menu_unit.phtml
+ *
+ * @created   2021-02-13
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ */
+namespace OP;
+
+//	...
+$root = ConvertURL('develop:/');
+$args = Args();
+
+//	Get unit name
+$unit = array_shift($args);
+
+//	Generate to asset:/unit/{$unit_name}/develop
+$base = ConvertPath('asset:/')."unit/{$unit}/develop/".join('/',$args);
+$base = rtrim($base, '/');
+
+//	Check if target is directory or file.
+if( file_exists($base.'.php') ){
+	//	file
+	$glob = dirname($base).'/*.php';
+	//	Remove last value. (Because it's a file)
+	$current_file_name = array_pop($args);
+}else{
+	//	directory
+	$glob = $base.'/*.php';
+}
+
+//	Bread crumbs
+echo '<section class="breadcrumbs">';
+echo "<span>$unit</span>";
+foreach($args as $arg){
+	echo "<span>$arg</span>";
+}
+
+//	...
+echo '<section class="crumbs" style="display:inline-block;">';
+foreach( glob($glob) as $path ){
+	//	...
+	if( strpos($path, '.inc.') ){
+		continue;
+	}
+
+	//	...
+	$file = basename($path);
+	$name = explode('.',$file)[0];
+	$href = $root.$unit.'/'.$name;
+
+	//	...
+	if( $name === $current_file_name ){
+		echo "<span>$name</span>";
+	}else{
+		echo "<a href=\"{$href}\">{$name}</a>";
+	}
+}
+echo '</section>';
+echo '</section>';
