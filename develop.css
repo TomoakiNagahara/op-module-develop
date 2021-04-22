@@ -8,11 +8,24 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
-#develop .menu:not(:last-child):after {
+/* Menu block */
+#develop section.menu > span:first-child:before {
+	margin-right:  0.3em;
+	content: "[";
+}
+
+#develop section.menu > span:last-child:after {
+	margin-left:  0.3em;
+	content: "]";
+}
+
+/* Menu separator */
+#develop .menu > span:not(:last-child):after {
 	margin-left:  0.3em;
 	content: "|";
 }
 
+/* Bread crumbs */
 #develop .breadcrumbs > span:after {
 	margin-left:  0.5em;
 	margin-right: 0.5em;
