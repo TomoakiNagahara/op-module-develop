@@ -12,7 +12,22 @@
  *
  * @created   2020-01-11
  */
+namespace OP\TESTCASE;
+
+function Auto(){};
+function Menu(){};
+
+/** namespace
+ *
+ */
 namespace OP;
+
+/** Get kind list.
+ *
+ */
+function GetKindList() : array {
+	return ['phpinfo','admin','selftest','testcase','unittest'];
+}
 
 /* @var $app UNIT\App */
 
@@ -21,6 +36,9 @@ if(!Env::isAdmin() ){
 	echo $_SERVER['REMOTE_ADDR'];
 	return;
 };
+
+//	...
+Load('Args');
 
 //	...
 RootPath('develop', dirname(Unit('Router')->EndPoint()));
@@ -37,4 +55,4 @@ $app->WebPack(__DIR__.'/develop.css');
 $app->Title('develop');
 
 //	...
-$app->Template('index.phtml');
+Template('index.phtml');
