@@ -9,6 +9,10 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
+/** controller.php
+ * @deprecated
+ */
+
 /** namespace
  *
  */
@@ -77,16 +81,20 @@ function UnitDirectory()
 	//	...
 	$args = Args();
 	$unit = array_shift($args);
-	$root = ConvertPath('asset:/unit').$unit.'/develop/';
+	$dir  = ConvertPath('asset:/unit').$unit.'/develop/';
 
-	D($unit, $root, $args);
+	//	...
+	if(!file_exists($dir)){
+		throw new \Exception("The develop directory does not exists. ($dir)");
+	}
 
 	//	...
 	if( file_exists($path = join('/',$args).'/action.php') ){
 		Template($path);
 	}else
 	if( file_exists($path = join('/',$args).'.php') ){
-
+		Template($path);
+	}else{
+		D();
 	}
-	D($path);
 }
