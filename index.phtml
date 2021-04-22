@@ -19,9 +19,8 @@ namespace OP;
 ?>
 <section>
 	<div id="develop">
-		<?php
-		$app->Template('menu.phtml');
-		$app->Template('controller.php');
-		?>
+		<?php Template('menu.inc.php') ?>
+		<hr/>
+		<?php Template('controller.inc.php') ?>
 	</div>
 </section>
