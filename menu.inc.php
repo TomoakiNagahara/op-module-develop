@@ -70,7 +70,7 @@ if( $kind === 'selftest' ){
 	<?php endforeach; ?>
 </section>
 
-<?php if( false ): ?>
+<?php if( true ): ?>
 <!-- file -->
 <section class="menu">
 	<?php foreach( glob($base_dir.'*') as $file_path ): ?>
@@ -90,11 +90,12 @@ if( $kind === 'selftest' ){
 		$file = $temp[0];
 
 		?>
-		<span><a href="<?= $root . "{$kind}/{$unit}/$file" ?>"><?= $file ?></a>?</span>
+		<span><a href="<?= $root . "{$kind}/{$unit}/$file" ?>"><?= $file ?></a></span>
 	<?php endforeach; ?>
 </section>
 <?php endif; ?>
 
+<?php if( false ): ?>
 <!-- files -->
 <section class="menu">
 	<?php foreach( glob(ConvertPath('asset:/unit/')."{$unit}/{$kind}/*.php") as $file_path ): ?>
@@ -119,3 +120,4 @@ if( $kind === 'selftest' ){
 		<span><a href="<?= $root . "{$kind}/{$unit}/{$file_name}" ?>"><?= $file_name ?></a></span>
 	<?php endforeach; ?>
 </section>
+<?php endif; ?>
