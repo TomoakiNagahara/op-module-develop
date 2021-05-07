@@ -18,7 +18,7 @@ if( $kind and array_search($kind, GetKindList()) === false ){
 
 //	...
 if( $kind === 'phpinfo' ){
-	phpinfo();
+	Template("phpinfo.php");
 	return;
 }
 
