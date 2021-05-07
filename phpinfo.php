@@ -8,5 +8,22 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
+/** namespace
+ *
+ */
+namespace OP;
+
+/** use
+ *
+ */
+use function OP\Layout;
+
 //	...
-phpinfo();
+if( $_GET['raw'] ?? null ){
+	Layout(false);
+	phpinfo();
+	return;
+}
+
+?>
+<iframe src="<?= $_SERVER['REQUEST_URI'] . '?raw=1' ?>" style="width:100%; height: 80vh; border: 0;">aaa</iframe>
