@@ -53,8 +53,8 @@ if( $kind === 'selftest' ){
 
 <!-- unit -->
 <section class="menu">
-	<span><a href="<?= $root . $kind .'/core'  ?>">core</a></span>
-	<span><a href="<?= $root . $kind .'/asset' ?>">asset</a></span>
+	<?php if( file_exists( RootPath('asset')."core/{$kind}/action.php") ): ?><span><a href="<?= $root . $kind .'/core'  ?>">core</a></span><?php  endif; ?>
+	<?php if( file_exists( RootPath('asset')."{$kind}/action.php"     ) ): ?><span><a href="<?= $root . $kind .'/asset' ?>">asset</a></span><?php endif; ?>
 	<?php foreach( glob(ConvertPath('asset:/unit/').'*', GLOB_ONLYDIR) as $unit_path ): ?>
 		<?php
 		//	...
@@ -70,7 +70,7 @@ if( $kind === 'selftest' ){
 	<?php endforeach; ?>
 </section>
 
-<?php if( true ): ?>
+<?php if( true and $base_dir ): ?>
 <!-- file -->
 <section class="menu">
 	<?php foreach( glob($base_dir.'*') as $file_path ): ?>
