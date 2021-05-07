@@ -5,6 +5,11 @@
  */
 namespace OP;
 
+//	Used by phpinfo.php.
+if( $_GET['raw'] ?? null ){
+	return;
+}
+
 //	...
 $root = ConvertURL('develop:/');
 
