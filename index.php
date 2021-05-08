@@ -26,7 +26,7 @@ namespace OP;
  *
  */
 function GetKindList() : array {
-	return ['phpinfo','admin','selftest','testcase','unittest'];
+	return ['phpinfo','admin','selftest','testcase','reference'];
 }
 
 /* @var $app UNIT\App */
