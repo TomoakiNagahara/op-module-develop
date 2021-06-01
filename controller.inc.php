@@ -54,11 +54,12 @@ if( $kind === 'selftest' or $kind === 'admin' ){
 }
 
 //	...
-if(
-	$kind !== 'reference' and
-	false === Template($path.'action.php',['args'=>$args])
-){
-	Markdown($path.'action.md');
+switch( $kind ){
+	case 'admin':
+	case 'selftest':
+	case 'reference':
+		Template($path.'action.php',['args'=>$args]);
+		Markdown($path.'action.md');
 	return;
 }
 
