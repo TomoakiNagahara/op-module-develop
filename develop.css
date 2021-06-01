@@ -20,7 +20,7 @@
 }
 
 /* Menu separator */
-#develop .menu > span:not(:last-child):after {
+#develop section.menu > span:not(:last-child):after {
 	margin-left:  0.3em;
 	content: "|";
 }
