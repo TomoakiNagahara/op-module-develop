@@ -55,18 +55,25 @@ if( $kind === 'selftest' or $kind === 'admin' ){
 
 //	...
 switch( $kind ){
+	//	...
 	case 'admin':
 	case 'selftest':
 	case 'reference':
 		Template($path.'action.php',['args'=>$args]);
 		Markdown($path.'action.md');
-	return;
-}
+		break;
 
-//	...
-if( $args ){
-	Template($path.join('/',$args).'.php', [], false);
-	Markdown($path.join('/',$args).'.md');
-}else{
-	Markdown($path.'action.md', false);
+	//	...
+	case 'testcase':
+		if( $args ){
+			Template($path.join('/',$args).'.php', []);
+			Markdown($path.join('/',$args).'.md');
+		}else{
+			Template($path.'action.php', []);
+			Markdown($path.'action.md', false);
+		}
+		break;
+
+	//	...
+	default:
 }
