@@ -39,7 +39,8 @@ if( empty($unit) ){
 */
 
 //	...
-if( $kind === 'selftest' or $kind === 'admin' ){
+if( $kind === 'selftest'  or
+	$kind === 'admin'     ){
 	$path = "./{$kind}/";
 }else{
 	      if( $unit === 'asset' ){
