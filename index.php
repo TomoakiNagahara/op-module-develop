@@ -49,6 +49,12 @@ Load('Args');
 //	...
 RootPath('develop', dirname(Unit('Router')->EndPoint()));
 
+//	If is shell, Run controller.
+if( Env::isShell() ){
+	OP::Template('controller.inc.php');
+	return;
+}
+
 //	Change the Layout.
 if( $layout = Config::Get('develop')['layout'] ?? 'white' ){
 	OP::Layout($layout);
