@@ -1,4 +1,12 @@
 <?php
+/** op-module-develop:/controller.inc.php
+ *
+ * @created   ????
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
 
 /** namespace
  *
@@ -66,6 +74,12 @@ switch( $kind ){
 
 	//	...
 	case 'testcase':
+		//	...
+		$endpoint = OP::Router()->EndPoint();
+		$endpoint = dirname($endpoint).'/testcase/';
+		RootPath('testcase',$endpoint,false);
+
+		//	...
 		if( $args ){
 			Template($path.join('/',$args).'.php', []);
 			Markdown($path.join('/',$args).'.md');
