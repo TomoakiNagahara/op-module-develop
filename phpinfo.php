@@ -16,11 +16,9 @@ namespace OP;
 /** use
  *
  */
-use function OP\Layout;
-
 //	...
 if( $_GET['raw'] ?? null ){
-	Layout(false);
+	OP::Layout(false);
 	phpinfo();
 	return;
 }
