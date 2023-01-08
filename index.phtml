@@ -24,3 +24,10 @@ namespace OP;
 		<?php Template('controller.inc.php') ?>
 	</div>
 </section>
+<?php
+//	...
+foreach( getallheaders() as $key => $var ){
+	if( $key === 'sec-ch-ua-platform' ){
+		Html("platform: {$var}");
+	}
+}
