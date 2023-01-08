@@ -83,6 +83,10 @@ switch( $kind ){
 		if( $args ){
 			Template($path.join('/',$args).'.php', []);
 			Markdown($path.join('/',$args).'.md');
+
+			//	Get reference.
+			$path = "asset:/{$unit}/reference/{$args[0]}.md";
+			Markdown($path);
 		}else{
 			Template($path.'action.php', []);
 			Markdown($path.'action.md', false);
