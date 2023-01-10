@@ -85,7 +85,11 @@ switch( $kind ){
 			Markdown($path.join('/',$args).'.md');
 
 			//	Get reference.
-			$path = "asset:/{$unit}/reference/{$args[0]}.md";
+			if( $unit === 'asset' ){
+				$path = "asset:/reference/{$args[0]}.md";
+			}else{
+				$path = "asset:/{$unit}/reference/{$args[0]}.md";
+			}
 			Markdown($path);
 		}else{
 			Template($path.'action.php', []);
