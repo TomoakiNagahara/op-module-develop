@@ -94,6 +94,11 @@ if( $kind === 'selftest' ){
 			continue;
 		}
 
+		//	NG -> _file.php
+		if( $file_name[0] === '_' ){
+			continue;
+		}
+
 		//	...
 		$file = $temp[0];
 
