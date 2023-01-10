@@ -99,6 +99,16 @@ if( $kind === 'selftest' ){
 			continue;
 		}
 
+		/*
+		//	OK -> File.php
+		if( $kind === 'testcase' ){
+			$case = strtoupper($file_name[0]);
+			if( $case !== $file_name[0] ){
+				continue;
+			}
+		}
+		*/
+
 		//	...
 		$file = $temp[0];
 
