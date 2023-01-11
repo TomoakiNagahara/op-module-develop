@@ -72,7 +72,6 @@ switch( $kind ){
 	//	...
 	case 'admin':
 	case 'selftest':
-	case 'reference':
 		Template($path.'action.php',['args'=>$args]);
 		Markdown($path.'action.md');
 		break;
@@ -84,6 +83,7 @@ switch( $kind ){
 			Template($path.join('/',$args).'.php', []);
 			Markdown($path.join('/',$args).'.md');
 
+			/* Git diff is poor. So comment out and make the diff correct.
 			//	Get reference.
 			if( $unit === 'asset' ){
 				$path = "asset:/reference/{$args[0]}.md";
@@ -91,9 +91,22 @@ switch( $kind ){
 				$path = "asset:/{$unit}/reference/{$args[0]}.md";
 			}
 			Markdown($path);
+			*/
 		}else{
 			Template($path.'action.php', []);
 			Markdown($path.'action.md', false);
+		}
+	//	break;
+
+		//	...
+	case 'reference':
+		if( $args ){
+			if( $unit === 'asset' ){
+				$path = "asset:/reference/{$args[0]}.md";
+			}else{
+				$path = "asset:/{$unit}/reference/{$args[0]}.md";
+			}
+			Markdown($path);
 		}
 		break;
 
