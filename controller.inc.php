@@ -62,6 +62,11 @@ if( $kind === 'selftest'  or
 	}
 }
 
+//	Register a meta root path.
+$endpoint = OP::Router()->EndPoint();
+$endpoint = dirname($endpoint)."/{$kind}/";
+RootPath($kind, $endpoint, false);
+
 //	...
 switch( $kind ){
 	//	...
@@ -74,11 +79,6 @@ switch( $kind ){
 
 	//	...
 	case 'testcase':
-		//	...
-		$endpoint = OP::Router()->EndPoint();
-		$endpoint = dirname($endpoint).'/testcase/';
-		RootPath('testcase',$endpoint,false);
-
 		//	...
 		if( $args ){
 			Template($path.join('/',$args).'.php', []);
