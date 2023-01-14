@@ -16,7 +16,22 @@ namespace OP;
 //	...
 $args = Args();
 $kind = array_shift($args);
-$unit = array_shift($args);
+$type = array_shift($args);
+$file = array_shift($args);
+
+//	...
+switch( $type ){
+	case 'core':
+	case 'asset':
+		break;
+	default:
+		//	unit
+		if( $type ){
+			$unit = $type;
+		}
+		$type = 'unit';
+	break;
+}
 
 //	...
 if( $kind and array_search($kind, GetKindList()) === false ){
@@ -51,6 +66,24 @@ if( $kind === 'selftest'  or
 	$kind === 'admin'     ){
 	$path = "./{$kind}/";
 }else{
+	//	...
+	switch( $type ){
+		case 'core':
+			$path = "asset:/core/{$kind}/";
+			break;
+
+		case 'asset':
+			$path = "asset:/{$kind}/";
+			break;
+
+		case 'unit':
+			$path = $unit ? "asset:/unit/{$unit}/$kind/": null;
+			break;
+
+		default:
+			$path = null;
+	}
+	/*
 	      if( $unit === 'asset' ){
 		$path = "asset:/{$kind}/";
 	}else if( $unit === 'core'  ){
@@ -60,6 +93,7 @@ if( $kind === 'selftest'  or
 	}else{
 		return;
 	}
+	*/
 }
 
 //	Register a meta root path.
@@ -79,9 +113,9 @@ switch( $kind ){
 	//	...
 	case 'testcase':
 		//	...
-		if( $args ){
-			Template($path.join('/',$args).'.php', []);
-			Markdown($path.join('/',$args).'.md');
+		if( $file ){
+			Template($path.$file.'.php', []);
+			Markdown($path.$file.'.md');
 
 			/* Git diff is poor. So comment out and make the diff correct.
 			//	Get reference.
@@ -92,7 +126,7 @@ switch( $kind ){
 			}
 			Markdown($path);
 			*/
-		}else{
+		}else if( $path ){
 			Template($path.'action.php', []);
 			Markdown($path.'action.md', false);
 		}
@@ -100,11 +134,17 @@ switch( $kind ){
 
 		//	...
 	case 'reference':
-		if( $args ){
-			if( $unit === 'asset' ){
-				$path = "asset:/reference/{$args[0]}.md";
-			}else{
-				$path = "asset:/{$unit}/reference/{$args[0]}.md";
+		if( $file ){
+			switch( $type ){
+				case 'core':
+					$path = "asset:/core/reference/{$file}.md";
+					break;
+				case 'asset':
+					$path = "asset:/reference/{$file}.md";
+					break;
+				default:
+					$path = "asset:/unit/{$unit}/reference/{$file}.md";
+				break;
 			}
 			Markdown($path);
 		}
