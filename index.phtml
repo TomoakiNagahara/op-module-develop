@@ -26,8 +26,5 @@ namespace OP;
 </section>
 <?php
 //	...
-foreach( getallheaders() as $key => $var ){
-	if( $key === 'sec-ch-ua-platform' ){
-		Html("platform: {$var}");
-	}
-}
+$platform = OP::Request('sec-ch-ua-platform');
+Html("platform: {$platform}");
