@@ -24,6 +24,28 @@ namespace OP;
 		<?php Template('controller.inc.php') ?>
 	</div>
 </section>
+
+<!-- syntax highlight -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+<!-- markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+//	...
+document.addEventListener('DOMContentLoaded', function(){
+	//	...
+	if( typeof marked === 'undefined' ){
+		return;
+	}
+
+	//	..
+	let codes = document.querySelectorAll('div.markdown code');
+	for(let code of codes){
+		code.innerHTML = marked.parse(code.innerText);
+	}
+});
+</script>
 <?php
 //	...
 $platform = OP::Request('sec-ch-ua-platform');
