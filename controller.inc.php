@@ -77,7 +77,7 @@ if( $kind === 'selftest'  or
 			break;
 
 		case 'unit':
-			$path = $unit ? "asset:/unit/{$unit}/$kind/": null;
+			$path = ($unit ?? null) ? "asset:/unit/{$unit}/$kind/": null;
 			break;
 
 		default:
