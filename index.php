@@ -35,8 +35,6 @@ function GetKindList() : array {
 	return ['phpinfo','admin','selftest','testcase','reference'];
 }
 
-/* @var $app UNIT\App */
-
 //	...
 if(!Env::isAdmin() ){
 	echo $_SERVER['REMOTE_ADDR'];
@@ -60,11 +58,9 @@ if( $layout = Config::Get('develop')['layout'] ?? 'white' ){
 	OP::Layout($layout);
 }
 
-//	...
+/* @var $app UNIT\App */
 $app->WebPack(__DIR__.'/develop.css');
-
-//	...
 $app->Title('develop');
 
 //	...
-Template('index.phtml');
+OP::Template('index.phtml');
