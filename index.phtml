@@ -35,14 +35,17 @@ namespace OP;
 //	...
 document.addEventListener('DOMContentLoaded', function(){
 	//	...
-	if( typeof marked === 'undefined' ){
-		return;
+	if( typeof marked !== 'undefined' ){
+		//	..
+		let codes = document.querySelectorAll('div.markdown');
+		for(let code of codes){
+			code.innerHTML = marked.parse(code.innerText);
+		}
 	}
 
-	//	..
-	let codes = document.querySelectorAll('div.markdown code');
-	for(let code of codes){
-		code.innerHTML = marked.parse(code.innerText);
+	//	Apply syntax highlighting.
+	if( typeof hljs !== 'undefined' ){
+		hljs.highlightAll();
 	}
 });
 </script>
