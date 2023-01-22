@@ -31,24 +31,7 @@ namespace OP;
 
 <!-- markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-//	...
-document.addEventListener('DOMContentLoaded', function(){
-	//	...
-	if( typeof marked !== 'undefined' ){
-		//	..
-		let codes = document.querySelectorAll('div.markdown');
-		for(let code of codes){
-			code.innerHTML = marked.parse(code.innerText);
-		}
-	}
-
-	//	Apply syntax highlighting.
-	if( typeof hljs !== 'undefined' ){
-		hljs.highlightAll();
-	}
-});
-</script>
+<script src="markdown.js"></script>
 <?php
 //	...
 $platform = OP::Request('sec-ch-ua-platform');
