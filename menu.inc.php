@@ -1,4 +1,12 @@
 <?php
+/** op-module-develop:/menu.inc.php
+ *
+ * @created   ????
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
 
 /** namespace
  *
