@@ -143,6 +143,9 @@ switch( $kind ){
 		}else if( $path ){
 			Template($path.'action.php', []);
 			Markdown($path.'action.md', false);
+		}else{
+			OP::Template('testcase.phtml');
+			OP::Markdown('testcase.md');
 		}
 		echo '</section>';
 	//	break;
