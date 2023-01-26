@@ -57,3 +57,20 @@
 	margin-right: 0.25em;
 	content: "|";
 }
+
+#develop .testcase {
+	_border: 1px solid var(--color-border);
+	margin: 1em 0;
+}
+
+#develop .testcase .markdown {
+	border: 1px solid var(--color-faintly);
+	background-color: var(--color-faintly);
+	border-radius: 0.25em;
+	padding: 0.5em 0 0 1em;
+}
+
+#develop .testcase .markdown code {
+	background-color: var(--color-clearly);
+	padding: 0.1em 0.25em 0.05em 0.25em;
+}
