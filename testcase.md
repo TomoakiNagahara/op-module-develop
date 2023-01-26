@@ -57,6 +57,13 @@ switch( gettype($var) ){
 	break;
 	default:
 }
-
 ?>
+```
+
+# HTML syntax check
+
+```html
+<div id="testcase" class="testcase">
+	This is <b>sample</b> text.<br>
+</div>
 ```
