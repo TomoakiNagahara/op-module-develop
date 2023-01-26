@@ -112,6 +112,7 @@ switch( $kind ){
 
 	//	...
 	case 'testcase':
+		echo '<section class="testcase">';
 		//	...
 		if( $file ){
 			Template($path.$file.'.php', []);
@@ -130,6 +131,7 @@ switch( $kind ){
 			Template($path.'action.php', []);
 			Markdown($path.'action.md', false);
 		}
+		echo '</section>';
 	//	break;
 
 		//	...
