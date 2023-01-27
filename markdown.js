@@ -7,6 +7,7 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
+/* <?php if( OP()->Config('execute')['markdown'] ): ?> */
 //	...
 document.addEventListener('DOMContentLoaded', function(){
 	//	...
@@ -33,3 +34,4 @@ document.addEventListener('DOMContentLoaded', function(){
 		});
 	};
 });
+/* <?php endif; ?> */
