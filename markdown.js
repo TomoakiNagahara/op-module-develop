@@ -9,7 +9,7 @@
  */
 /* <?php if( OP()->Config('execute')['markdown'] ): ?> */
 //	...
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', async function(){
 	//	Apply markdown
 	if( typeof marked !== 'undefined' ){
 		//	..
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	//	Apply syntax highlighting.
 	if( typeof hljs !== 'undefined' ){
 		//	...
-		document.querySelectorAll('pre > code').forEach(function(code){
+		document.querySelectorAll('pre > code').forEach( async function(code){
 			//	Do highlight for each code tag.
 			hljs.highlightElement(code);
 			//	Add class.
