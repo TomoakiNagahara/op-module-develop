@@ -13,10 +13,9 @@ document.addEventListener('DOMContentLoaded', async function(){
 	//	Apply markdown
 	if( typeof marked !== 'undefined' ){
 		//	..
-		let codes = document.querySelectorAll('div.markdown');
-		for(let code of codes){
+		document.querySelectorAll('div.markdown').forEach( async function(code){
 			code.innerHTML = marked.parse(code.innerText);
-		}
+		});
 	}
 
 	/* <?php if( OP()->Config('execute')['highlight'] ): ?> */
