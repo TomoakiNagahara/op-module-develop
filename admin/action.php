@@ -17,9 +17,6 @@ namespace OP;
 //	...
 $develop_root = ConvertURL('develop:/admin/');
 
-//	...
-$args = Unit('Router')->Args();
-
 ?>
 <?php if( $list = include('list.php') ): ?>
 <section>
@@ -34,6 +31,7 @@ $args = Unit('Router')->Args();
 <?php endif; ?>
 <?php
 //	...
+$args = Unit('Router')->Args();
 if(!$name = $args[1] ?? null ){
 	return;
 }
