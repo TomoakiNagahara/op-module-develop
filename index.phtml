@@ -31,4 +31,4 @@ namespace OP;
 
 <!-- markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="<?= OP::MetaPath('develop:/markdown.js',1) ?>"></script>
+<?php OP()->Unit('WebPack')->Auto('markdown.js'); ?>
