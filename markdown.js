@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async function(){
 		});
 	}
 
-	/* <?php if( OP()->Config('execute')['highlight'] ): ?> */
 	//	Apply syntax highlighting.
 	if( typeof hljs !== 'undefined' ){
 		//	...
@@ -49,5 +48,4 @@ document.addEventListener('DOMContentLoaded', async function(){
 			});
 		});
 	};
-	/* <?php endif; ?> */
 });
