@@ -10,6 +10,22 @@
 /* <?php if( OP()->Config('execute')['markdown'] ): ?> */
 //	...
 document.addEventListener('DOMContentLoaded', async function(){
+	//	...
+	marked.setOptions({
+		gfm:         true,
+		tables:      true,
+		breaks:      false,
+		/*
+		pedantic:    false,
+		smartLists:  true,
+		smartypants: false,
+		sanitize:    true,
+		langPrefix: 'language-',
+		highlight:   function(code, lang) {
+			return   code;
+		}
+		*/
+	});
 	//	Apply markdown
 	if( typeof marked !== 'undefined' ){
 		//	..
