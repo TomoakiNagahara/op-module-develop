@@ -1,0 +1,44 @@
+<?php
+/** op-module-develop:/reference.php
+ *
+ * @created   2023-01-27
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ */
+namespace OP;
+
+/* @var $args array */
+$file = $args['file'];
+$type = $args['type'];
+$unit = $args['unit'];
+
+//	...
+if( $file ){
+	switch( $type ){
+		case 'core':
+			$path = "asset:/core/reference/{$file}.md";
+			break;
+		case 'asset':
+			$path = "asset:/reference/{$file}.md";
+			break;
+		default:
+			$path = "asset:/unit/{$unit}/reference/{$file}.md";
+			break;
+	}
+	Markdown($path);
+}
+
+//	...
+if( empty($file) and empty($unit) and $type === 'unit' ){
+	Markdown('app:/README.md');
+}else{
+	D($file, $unit, $type);
+}
+
+Notice('Is this use?');
