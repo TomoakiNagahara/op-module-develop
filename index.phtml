@@ -25,12 +25,14 @@ namespace OP;
 	</div>
 </section>
 
-<!-- syntax highlight -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-
 <?php if( OP::Config('execute')['markdown'] ): ?>
 <!-- markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <?php OP()->Unit('WebPack')->Auto('markdown.js'); ?>
+<?php endif; ?>
+
+<?php if( OP()->Config('execute')['highlight'] ): ?>
+<!-- syntax highlight -->
+<link  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <?php endif; ?>
