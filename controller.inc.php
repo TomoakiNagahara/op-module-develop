@@ -23,6 +23,7 @@ $args = Args();
 $kind = array_shift($args);
 $type = array_shift($args);
 $file = array_shift($args);
+$unit = null;
 
 //	...
 switch( $type ){
@@ -141,20 +142,7 @@ switch( $kind ){
 
 		//	...
 	case 'reference':
-		if( $file ){
-			switch( $type ){
-				case 'core':
-					$path = "asset:/core/reference/{$file}.md";
-					break;
-				case 'asset':
-					$path = "asset:/reference/{$file}.md";
-					break;
-				default:
-					$path = "asset:/unit/{$unit}/reference/{$file}.md";
-				break;
-			}
-			Markdown($path);
-		}
+		OP::Template('reference.phtml', ['type'=>$type, 'unit'=>$unit, 'file'=>$file]);
 		break;
 
 	//	...
