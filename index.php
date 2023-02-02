@@ -59,8 +59,10 @@ if( $layout = Config::Get('develop')['layout'] ?? 'white' ){
 }
 
 /* @var $app UNIT\App */
-$app->WebPack(__DIR__.'/develop.css');
 $app->Title('develop');
 
 //	...
 OP::Template('index.phtml');
+OP::Unit('WebPack')->Auto('menu.js');
+OP::Unit('WebPack')->Auto('menu.css');
+OP::Unit('WebPack')->Auto('develop.css');
