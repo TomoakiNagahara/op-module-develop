@@ -1,0 +1,159 @@
+<?php
+/** op-module-develop:/menu-right.phtml
+ *
+ * @created    2023-01-31
+ * @version    1.0
+ * @package    op-module-develop
+ * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright  Tomoaki Nagahara All right reserved.
+ */
+
+/** declare
+ *
+ */
+declare(strict_types=1);
+
+/** namespace
+ *
+ */
+namespace OP;
+
+//	...
+if(!$root = GetRoot() ){
+	return;
+}
+//D($root);
+
+if(!$glob = GetGlob() ){
+	return;
+}
+//D($glob);
+
+/** Get current root.
+ *
+ * @created    2023-02-02
+ * @return     string
+ */
+function GetRoot(){
+	//	...
+	$args = OP::Router()->Args();
+
+	//	...
+	if( empty($args[1]) ){
+		return;
+	}
+
+	//	...
+	switch( $args[1] ){
+		case 'core':
+		case 'asset':
+			if( $args[2] ?? null ){
+				array_pop($args);
+			}
+			break;
+
+		case 'unit':
+			if( $args[3] ?? null ){
+				array_pop($args);
+			}
+			break;
+
+		default:
+			if( $args[3] ?? null ){
+				array_pop($args);
+			}
+		break;
+	}
+//	D($args);
+
+	//	...
+	$root = OP::MetaPath('develop:/', true) . join('/',$args).'/';
+//	D($root);
+
+	//	...
+	return $root;
+}
+
+/** Get glob path.
+ *
+ * @created    2023-02-02
+ * @return     string
+ */
+function GetGlob(){
+	//	...
+	$args = OP::Router()->Args();
+
+	//	...
+	$configs = OP::Unit('Git')->SubmoduleConfig();
+
+	//	...
+	switch( $args[1] ?? '' ){
+		case '':
+			return;
+
+		case 'asset':
+			$glob = OP::MetaRoot($args[1]) . $args[1];
+			$config['path'] = 'asset';
+			break;
+
+		default:
+			//	...
+			if( $args[1] === 'core' ){
+				$key = 'asset-core';
+			}else{
+				$key = empty($args[2]) ? "asset-{$args[1]}": "asset-{$args[1]}-{$args[2]}";
+			}
+
+			//	...
+			if( isset($configs[$key]) ){
+				$config = $configs[$key];
+			}else{
+				if( isset($configs[$args[1]]) ){
+					$config = $configs[$args[1]];
+				}else{
+					//	...
+					foreach( $configs as $config ){
+						if(!strpos($config['url'], $args[1]) ){
+							continue;
+						}
+						if(!strpos($config['url'], $args[2]) ){
+							continue;
+						}
+						break;
+					}
+				}
+			}
+		break;
+	}
+
+	//	...
+	if( empty($config) ){
+		D($args, $configs);
+		return;
+	}
+
+	//	...
+	$glob  = OP::MetaRoot('git');
+	$glob .= $config['path'].'/';
+	$glob .= "{$args[0]}/*.";
+	$glob .= $args[0] === 'reference' ? 'md':'php';
+
+	//	...
+	return $glob;
+}
+
+?>
+<section id="menu-right">
+	<ul>
+		<?php foreach( glob($glob) as $file ): ?>
+		<?php
+		$file = basename($file);
+		$file = explode('.', $file)[0];
+		if( $file === 'action' ){
+			continue;
+		}
+		?>
+		<li><a href="<?= $root . $file ?>"><?= $file ?></a></li>
+		<?php endforeach; ?>
+	</ul>
+</section>
