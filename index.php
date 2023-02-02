@@ -8,6 +8,11 @@
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
+/** declare
+ *
+ */
+declare(strict_types=1);
+
 /** namespace
  *
  * @created   2020-01-11
