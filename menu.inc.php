@@ -41,9 +41,10 @@ if( $unit ){
 	}else if( $unit === 'asset' ){
 		$base_dir = "asset:/{$kind}";
 	}else{
-		$base_dir = "asset:/unit/{$unit}/{$kind}";
+		$unit = str_replace('-', '/', $unit);
+		$base_dir = "asset:/{$unit}/{$kind}";
 	}
-	$base_dir = ConvertPath($base_dir);
+//	$base_dir = ConvertPath($base_dir);
 }else{
 	$base_dir = null;
 }
@@ -65,6 +66,7 @@ if( $kind === 'selftest' ){
 <?php if( empty($kind) ){ return; } ?>
 
 <!-- unit -->
+<!-- old logic
 <section class="menu">
 	<?php if( file_exists( RootPath('asset')."core/{$kind}/") ): ?><span><a href="<?= $root . $kind .'/core'  ?>">core</a></span><?php  endif; ?>
 	<?php if( file_exists( RootPath('asset')."{$kind}/"     ) ): ?><span><a href="<?= $root . $kind .'/asset' ?>">asset</a></span><?php endif; ?>
@@ -80,6 +82,47 @@ if( $kind === 'selftest' ){
 
 		?>
 		<span><a href="<?= $root . $kind .'/'. $unit_name ?>"><?= $unit_name ?></a></span>
+	<?php endforeach; ?>
+</section>
+ -->
+
+<!-- From Git module config file -->
+<section class="menu">
+	<?php
+	$types = [];
+	$types['asset'] = ['asset'];
+	foreach( OP()->Unit('Git')->SubmoduleConfig() as $config ){
+		foreach(['unit','module','layout','webpack','core'] as $key){
+			if( strpos($config['url'], $key) ){
+				$temp = explode('/', $config['path']);
+				$name = array_pop($temp);
+				$types[$key][] = $name;
+				break;
+			}
+		}
+	}
+	?>
+	<?php foreach(['core','asset','unit','module','webpack','layout'] as $key): ?>
+		<?php if( count($types[$key]) === 1 ): ?>
+			<?php
+			$name = $types[$key][0];
+			$href = ($key==='core' or $key==='asset') ? $key : $key.'/'.$name;
+			?>
+			<span><a href="<?= $root . $kind .'/'. $href ?>"><?= $name ?></a></span>
+		<?php else: ?>
+			<?= $key ?>
+			<span class="fold">
+				<span class="switch">...</span>
+				<span class="items" style="display: none;">
+				<?php foreach($types[$key] as $name): ?>
+					<?php
+					$href = $key.'/'.$name;
+					?>
+					<span><a href="<?= $root . $kind .'/'. $href ?>"><?= $name ?></a></span>
+				<?php endforeach; ?>
+				</span>
+			</span>
+		<?php endif; ?>
 	<?php endforeach; ?>
 </section>
 
