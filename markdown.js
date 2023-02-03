@@ -30,7 +30,14 @@ document.addEventListener('DOMContentLoaded', async function(){
 	if( typeof marked !== 'undefined' ){
 		//	..
 		document.querySelectorAll('div.markdown').forEach( async function(code){
-			code.innerHTML = marked.parse(code.innerText);
+			//	Get HTML from parsed markdown.
+			let html = marked.parse(code.innerText);
+			//	Remove LF code.
+			while( html.search(/>\n/) !== -1 ){
+				html = html.replace(">\n",'>');
+			}
+			//	Replace to HTML.
+			code.innerHTML = html;
 		});
 	}
 
