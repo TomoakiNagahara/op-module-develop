@@ -24,6 +24,7 @@ $kind = array_shift($args);
 $type = array_shift($args);
 $file = array_shift($args);
 $unit = null;
+$path = null;
 
 //	...
 switch( $type ){
@@ -83,11 +84,17 @@ if( $kind === 'selftest'  or
 			break;
 
 		case 'unit':
-			$path = ($unit ?? null) ? "asset:/unit/{$unit}/$kind/": null;
+			D($type, $unit);
+			if( $unit === 'unit' ){
+				//	...
+			}else{
+				$unit = str_replace('-', '/', $unit);
+				$path = "asset:/{$unit}/$kind/";
+			}
+			D($path);
 			break;
 
 		default:
-			$path = null;
 	}
 	/*
 	      if( $unit === 'asset' ){
