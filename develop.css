@@ -79,3 +79,18 @@
 	display: flex; 
 	justify-content: space-between;
 }
+
+#menu-right {
+	border: 1px solid var(--op-color-border);
+	padding: 0.5em 1em;
+}
+
+#menu-right ul, 
+#menu-right li {
+	margin:  0;
+	padding: 0;
+}
+
+#menu-right li {
+	list-style-type: none;
+}
