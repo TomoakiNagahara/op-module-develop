@@ -74,3 +74,8 @@
 	background-color: var(--op-color-clearly);
 	padding: 0.1em 0.25em 0.05em 0.25em;
 }
+
+#develop .flex {
+	display: flex; 
+	justify-content: space-between;
+}
