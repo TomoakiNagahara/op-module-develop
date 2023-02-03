@@ -14,14 +14,33 @@
  */
 namespace OP;
 
-/* @var $app UNIT\App */
-
 ?>
 <section>
 	<div id="develop">
-		<?php Template('menu.inc.php') ?>
+		<?php OP::Template('menu.inc.php') ?>
 		<hr/>
-		<?php Template('controller.inc.php') ?>
+		<div class="flex">
+			<div>
+			<?php
+			switch( OP()->Router()->Args()[0] ?? null ){
+				case 'testcase':
+					OP::Template('testcase.php');
+					echo "<hr/>";
+				//	break;
+
+				case 'reference':
+					OP::Template('reference.php');
+					break;
+
+				default:
+					OP::Template('controller.inc.php');
+			}
+			?>
+			</div>
+			<div>
+				<?php OP::Template('menu-right.phtml') ?>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -33,6 +52,8 @@ namespace OP;
 
 <?php if( OP()->Config('execute')['highlight'] ): ?>
 <!-- syntax highlight -->
+<!--
 <link  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet" />
+ -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <?php endif; ?>
