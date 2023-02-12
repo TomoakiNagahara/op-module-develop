@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 				let minwin = GetFloatingWindow();
 					minwin.style.top  = e.clientY + 10 + 'px';
 					minwin.style.left = e.clientX + 10 + 'px';
+					minwin.style.display = '';
 				if( minwin.innerHTML !== '' ){
 					return;
 				}else if( minwin.innerHTML === '?' ){
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 				let minwin = GetFloatingWindow();
 					minwin.style.top  = 0+'px';
 					minwin.style.left = 0+'px';
+					minwin.style.display = 'none';
 					minwin.innerHTML  = '';
 			}, false);
 		});
