@@ -38,10 +38,10 @@ switch( $meta = $args[1] ?? null ){
 
 	default:
 		foreach( OP::Unit('Git')->SubmoduleConfig() as $config ){
-			if(!strpos($config['url'], $args[1]) ){
+			if(!strpos($config['url'], $args[1] ?? '') ){
 				continue;
 			}
-			if(!strpos($config['url'], $args[2]) ){
+			if(!strpos($config['url'], $args[2] ?? '') ){
 				continue;
 			}
 			break;
