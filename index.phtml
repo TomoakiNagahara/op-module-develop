@@ -22,11 +22,20 @@ namespace OP;
 		<div class="flex">
 			<div>
 			<?php
-			switch( OP()->Router()->Args()[0] ?? null ){
+			$args = OP()->Router()->Args();
+			switch( $args[0] ?? null ){
 				case 'testcase':
+					//	...
 					OP::Template('testcase.php');
-					echo "<hr/>";
-				//	break;
+
+					//	...
+					if( $args[1] ?? null ){
+						if( $args[2] ?? null ){
+							echo "<hr/>";
+						}
+						OP::Template('reference.php');
+					}
+					break;
 
 				case 'reference':
 					OP::Template('reference.php');
