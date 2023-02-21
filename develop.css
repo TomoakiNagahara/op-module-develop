@@ -63,18 +63,6 @@
 	margin: 1em 0;
 }
 
-#develop .testcase .markdown {
-	border: 1px solid var(--op-color-faintly);
-	background-color: var(--op-color-faintly);
-	border-radius: 0.25em;
-	padding: 0.5em 0 0 1em;
-}
-
-#develop .testcase .markdown code {
-	background-color: var(--op-color-clearly);
-	padding: 0.1em 0.25em 0.05em 0.25em;
-}
-
 #develop .flex {
 	display: flex; 
 	justify-content: space-between;
