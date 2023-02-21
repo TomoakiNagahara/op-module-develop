@@ -1,0 +1,24 @@
+
+/** op-module-develop:/markdown.css
+ *
+ *  Use `asset:/webpack/css/markdown.css` for markdown style.
+ *  This file write the style that `op-module-develop` overwrites.
+ *
+ * @created   2023-02-21
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+#develop .testcase .markdown {
+	border: 1px solid var(--op-color-faintly);
+	background-color: var(--op-color-faintly);
+	border-radius: 0.25em;
+	padding: 0.5em 0 0 1em;
+}
+
+#develop .testcase .markdown code {
+	background-color: var(--op-color-clearly);
+	padding: 0.1em 0.25em 0.05em 0.25em;
+}
