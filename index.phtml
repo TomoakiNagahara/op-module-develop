@@ -48,6 +48,7 @@ namespace OP;
 <!-- markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <?php OP()->Unit('WebPack')->Auto('markdown.js'); ?>
+<?php OP()->Unit('WebPack')->Auto('markdown.css'); ?>
 <?php endif; ?>
 
 <?php if( OP()->Config('execute')['highlight'] ): ?>
