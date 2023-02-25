@@ -64,5 +64,5 @@ switch( $meta = $args[1] ?? '' ){
 
 //	...
 if( $path ?? null ){
-	OP::Markdown($path.'.md');
+	OP::Markdown($path.'.md', false);
 }
