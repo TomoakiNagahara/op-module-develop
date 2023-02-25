@@ -54,6 +54,6 @@ switch( $meta = $args[1] ?? null ){
 
 //	...
 if( $path ?? null ){
-	OP::Markdown($path.'.md');
+	OP::Markdown($path.'.md', false);
 	OP::Template($path.'.php');
 }
