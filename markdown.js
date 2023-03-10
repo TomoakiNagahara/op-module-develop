@@ -61,55 +61,9 @@ document.addEventListener('DOMContentLoaded', async function(){
 
 	//	Mouse over translate
 	document.querySelectorAll('div.markdown').forEach( async function(node){
-		node.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,th,td').forEach( async function(node){
-			//	...
-			node.addEventListener('mouseover', async function(e){
-				let target = e.target;
-				let minwin = GetFloatingWindow();
-					minwin.style.top  = e.clientY + 10 + 'px';
-					minwin.style.left = e.clientX + 10 + 'px';
-					minwin.style.display = '';
-				if( minwin.innerHTML !== '' ){
-					return;
-				}else if( minwin.innerHTML === '?' ){
-					return;
-				}else{
-					minwin.innerHTML = '?';
-				}
-				//	...
-				$OP['Translate'](target.innerHTML, function(translate){
-					minwin.innerHTML = translate;
-				});
-			}, false);
-
-			//	...
-			node.addEventListener('mouseleave', async function(e){
-				let target = e.target;
-				let minwin = GetFloatingWindow();
-					minwin.style.top  = 0+'px';
-					minwin.style.left = 0+'px';
-					minwin.style.display = 'none';
-					minwin.innerHTML  = '';
-			}, false);
+		//	...
+		node.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,th,td').forEach(function(node){
+			$OP.Translate.Popup(node);
 		});
 	});
-
-	//	...
-	function GetFloatingWindow(){
-		//	...
-		let minwin = document.querySelector('#translated_window');
-		if(!minwin ){
-			minwin = document.createElement('span');
-			minwin.id = 'translated_window';
-			minwin.style.zIndex   = 100;
-			minwin.style.position = 'fixed';
-			document.querySelector("body").appendChild(minwin);
-		}
-
-		//	...
-		minwin.innerHTML = '';
-
-		//	...
-		return minwin;
-	}
 });
