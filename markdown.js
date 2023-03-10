@@ -10,6 +10,7 @@
 
 //	...
 document.addEventListener('DOMContentLoaded', async function(){
+	if( typeof marked !== 'undefined' ){
 	//	...
 	marked.setOptions({
 		gfm:         true,
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', async function(){
 		}
 		*/
 	});
+	}
+
 	//	Apply markdown
 	if( typeof marked !== 'undefined' ){
 		//	..
