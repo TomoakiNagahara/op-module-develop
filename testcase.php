@@ -37,15 +37,18 @@ switch( $meta = $args[1] ?? null ){
 		break;
 
 	default:
+		//	...
 		foreach( OP::Unit('Git')->SubmoduleConfig() as $config ){
-			if(!strpos($config['url'], $args[1] ?? '') ){
+			if( isset($args[1]) and !strpos($config['url'], $args[1]) ){
 				continue;
 			}
-			if(!strpos($config['url'], $args[2] ?? '') ){
+			if( isset($args[2]) and !strpos($config['url'], $args[2]) ){
 				continue;
 			}
 			break;
 		}
+
+		//	...
 		if(!empty($args[3]) ){
 			$path = "git:/{$config['path']}/testcase/{$args[3]}";
 		}
