@@ -64,8 +64,20 @@
 }
 
 #develop .flex {
-	display: flex; 
+	display: flex;
+	/* https://developer.mozilla.org/ja/docs/Web/CSS/justify-content
+	 * start: |         |
+	 * space: |         |
+	 */
 	justify-content: space-between;
+}
+
+#develop .flex > div {
+	_border: 1px dotted black;
+}
+
+#develop .flex > div:first-child {
+	flex-grow: 1;
 }
 
 #menu-right {
