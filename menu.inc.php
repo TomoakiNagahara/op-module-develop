@@ -56,14 +56,14 @@ if( $kind === 'selftest' ){
 
 ?>
 
-<!-- kind -->
+<!-- kind list -->
 <section class="menu">
 	<?php foreach( $kind_list as $key ): ?>
 	<span><a href="<?= $root . $key ?>"><?= $key ?></a></span>
 	<?php endforeach; ?>
 </section>
 
-<?php if( empty($kind) ){ return; } ?>
+<?php if( empty($kind) or $kind === 'phpinfo' ){ return; } ?>
 
 <!-- unit -->
 <!-- old logic
