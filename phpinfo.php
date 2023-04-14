@@ -16,6 +16,7 @@ namespace OP;
 /** use
  *
  */
+
 //	...
 if( $_GET['raw'] ?? null ){
 	OP::Layout(false);
@@ -23,5 +24,25 @@ if( $_GET['raw'] ?? null ){
 	return;
 }
 
+//  ...
+if( $_GET['session'] ?? null ){
+    $temp = [];
+    foreach([
+        'session_save_path',
+        'session_name',
+        'session_cache_expire',
+        'session_cache_limiter',
+    ] as $function ){
+        $temp[$function] = $function();
+    }
+    D($temp);
+}
+
 ?>
-<iframe src="<?= $_SERVER['REQUEST_URI'] . '?raw=1' ?>" style="width:100%; height: 80vh; border: 0;">aaa</iframe>
+<section>
+    [
+        <a href="?raw=1">raw</a>
+        <a href="?session=1">session</a>
+    ]
+</section>
+<iframe src="?raw=1" style="width:100%; height: 80vh; border: 0;">aaa</iframe>
