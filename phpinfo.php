@@ -26,7 +26,15 @@ if( $_GET['raw'] ?? null ){
 
 //  ...
 if( $_GET['session'] ?? null ){
+    //  ...
     $temp = [];
+
+    //  ...
+    $count = (int)($_SESSION['count'] ?? null);
+    $count++;
+    $temp['count'] = $_SESSION['count'] = $count;
+
+    //  ...
     foreach([
         'session_save_path',
         'session_name',
