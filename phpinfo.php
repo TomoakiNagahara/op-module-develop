@@ -47,10 +47,8 @@ if( $_GET['session'] ?? null ){
 }
 
 ?>
-<section>
-    [
-        <a href="?raw=1">raw</a>
-        <a href="?session=1">session</a>
-    ]
+<section class="menu">
+        <span><a href="?raw=1">raw</a></span>
+        <span><a href="?session=1">session</a></span>
 </section>
 <iframe src="?raw=1" style="width:100%; height: 80vh; border: 0;">aaa</iframe>
