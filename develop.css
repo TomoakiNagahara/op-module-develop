@@ -108,3 +108,17 @@
 	border-color:     var(--op-color-border);
 	background-color: var(--op-color-back);
 }
+
+h1 {
+    font-size: 20px;
+}
+
+h1:first-child > img {
+    display: none;
+}
+
+h1:first-child:before {
+    content: url(https://user-images.githubusercontent.com/1668339/72398593-cb0d1900-3786-11ea-863c-418ff8d48f43.png);
+    vertical-align: middle;
+    margin-right:  0.5rem;
+}
