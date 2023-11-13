@@ -19,7 +19,7 @@ namespace OP;
 
 //	...
 if( $_GET['raw'] ?? null ){
-	OP::Layout(false);
+	OP()->Layout(false);
 	phpinfo();
 	return;
 }
