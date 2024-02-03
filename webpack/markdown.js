@@ -64,10 +64,12 @@ document.addEventListener('DOMContentLoaded', async function(){
 	};
 
 	//	Mouse over translate
+	if( typeof $OP?.Translate?.Popup !== 'undefined' ){
 	document.querySelectorAll('div.markdown').forEach( async function(node){
 		//	...
 		node.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,th,td').forEach(function(node){
 			$OP.Translate.Popup(node);
 		});
 	});
+	}
 });
