@@ -54,7 +54,7 @@ if( Env::isShell() ){
 }
 
 //	Change the Layout.
-if( $layout = Config::Get('develop')['layout'] ?? 'white' ){
+if( $layout = OP()->Config('develop')['layout'] ?? 'flexbox' ){
 	OP::Layout($layout);
 }
 
