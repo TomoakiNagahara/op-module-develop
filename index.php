@@ -19,9 +19,11 @@ declare(strict_types=1);
  */
 namespace OP\DEVELOP;
 
+/*
 //	...
 function Auto(){};
 function Menu(){};
+*/
 
 /** namespace
  *
@@ -31,9 +33,11 @@ namespace OP;
 /** Get kind list.
  *
  */
+/*
 function GetKindList() : array {
 	return ['phpinfo','admin','selftest','testcase','reference'];
 }
+*/
 
 //	...
 if(!Env::isAdmin() ){
@@ -41,30 +45,36 @@ if(!Env::isAdmin() ){
 	return;
 };
 
+/*
 //	...
 Load('Args');
-
-//	...
-RootPath('develop', dirname(Unit('Router')->EndPoint()));
 
 //	If is shell, Run controller.
 if( Env::isShell() ){
 	OP::Template('controller.inc.php');
 	return;
 }
-
-//	Change the Layout.
-if( $layout = OP()->Config('develop')['layout'] ?? 'flexbox' ){
-	OP::Layout($layout);
-}
-
-/* @var $app UNIT\App */
-$app->Title('develop');
+*/
 
 //	...
-OP::Template('index.phtml');
-OP::Unit('WebPack')->Auto('menu.js');
-OP::Unit('WebPack')->Auto('menu.css');
-OP::Unit('WebPack')->Auto('develop.css');
-OP::Unit('WebPack')->Auto("asset:/webpack/js/");
-OP::Unit('WebPack')->Auto("asset:/webpack/css/");
+RootPath('develop', dirname(Unit('Router')->EndPoint()));
+
+//	Change of Layout.
+$layout = OP()->Config('layout');
+$layout['name'] = OP()->Config('develop')['layout'] ?? 'flexbox';
+foreach(['top','left'] as $position ){
+	$layout['path']['menu'][$position] = realpath("./layout/menu/{$position}.phtml");
+}
+OP()->Config('layout', $layout);
+
+//	Change of Title.
+$html = OP()->Config('html');
+$html['head']['title'] = "Develop | {$html['head']['title']}";
+OP()->Config('html', $html);
+
+//	...
+OP()->Template('index.phtml');
+OP()->Unit('WebPack')->Auto('menu.*');
+OP()->Unit('WebPack')->Auto('develop.*');
+OP()->Unit('WebPack')->Auto("asset:/webpack/js/");
+OP()->Unit('WebPack')->Auto("asset:/webpack/css/");
