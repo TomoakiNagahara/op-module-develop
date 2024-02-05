@@ -17,32 +17,13 @@ namespace OP;
 ?>
 <section>
 	<div id="develop">
-		<?php OP::Template('menu.inc.php') ?>
-		<hr/>
 		<div class="flex">
 			<div>
 			<?php
-			$args = OP()->Router()->Args();
-			switch( $args[0] ?? null ){
-				case 'testcase':
-					//	...
-					OP::Template('testcase.php');
-
-					//	...
-					if( $args[1] ?? null ){
-						if( $args[2] ?? null ){
-							echo "<hr/>";
-						}
-						OP::Template('reference.php');
-					}
+			switch( OP()->Router()->Args()[0] ?? null ){
+				case 'phpinfo':
+					include('phpinfo.php');
 					break;
-
-				case 'reference':
-					OP::Template('reference.php');
-					break;
-
-				default:
-					OP::Template('controller.inc.php');
 			}
 			?>
 			</div>
@@ -56,8 +37,7 @@ namespace OP;
 <?php if( OP::Config('execute')['markdown'] ): ?>
 <!-- markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<?php OP()->Unit('WebPack')->Auto('markdown.js'); ?>
-<?php OP()->Unit('WebPack')->Auto('markdown.css'); ?>
+<?php OP()->WebPack()->Auto('./webpack/markdown.*'); ?>
 <?php endif; ?>
 
 <?php if( OP()->Config('execute')['highlight'] ): ?>
