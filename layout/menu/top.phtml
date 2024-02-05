@@ -1,0 +1,21 @@
+<?php
+/** op-module-develop:/layout/menu/top.phtml
+ *
+ * @created   2024-02-05
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ */
+namespace OP;
+
+?>
+<section class="menu">
+	<?php foreach(['phpinfo','admin','selftest','testcase','reference'] as $key): ?>
+	<span><a href="<?= OP()->MetaPath("develop:/{$key}/", true) ?>"><?= $key ?></a></span>
+	<?php endforeach; ?>
+</section>
