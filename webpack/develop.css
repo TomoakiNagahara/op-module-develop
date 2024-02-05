@@ -9,18 +9,18 @@
  */
 
 /* Menu block */
-#develop section.menu > span:first-child:before {
+section.menu > span:first-child:before {
 	margin-right:  0.3em;
 	content: "[";
 }
 
-#develop section.menu > span:last-child:after {
+section.menu > span:last-child:after {
 	margin-left:  0.3em;
 	content: "]";
 }
 
 /* Menu separator */
-#develop section.menu > span:not(:last-child):after {
+section.menu > span:not(:last-child):after {
 	margin-left:  0.3em;
 	content: "|";
 }
