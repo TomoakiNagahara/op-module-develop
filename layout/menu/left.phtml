@@ -1,0 +1,80 @@
+<?php
+/** op-module-develop:/layout/menu/top.phtml
+ *
+ * @created   2024-02-05
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ */
+namespace OP;
+
+//	...
+$root = OP()->MetaPath('develop:/', true);
+$args = OP()->Router()->Args();
+$cate = $args[0] ?? null;
+/*
+$base = $args[1] ?? null;
+$name = $args[2] ?? null;
+$file = $args[3] ?? null;
+*/
+
+//	...
+if(!$cate ){
+	return;
+}
+?>
+<section class="">
+	<ul>
+	<?php foreach(['unit','layout','module'] as $base): ?>
+		<li>
+			<?php
+			$bold = $base === $args[1] ? 'bold': '';
+			?>
+			<span class="<?= $bold ?>"><?= $base ?></span>
+			<ul>
+			<?php foreach(glob(OP()->MetaPath("{$base}:/").'*') as $path): ?>
+				<?php
+				if( file_exists("{$path}/{$cate}/") === false ){
+					continue;
+				}
+				$name = basename($path);
+				?>
+				<li>
+					<?php
+					$bold = $name === $args[2] ? 'bold': '';
+					?>
+					<a href="<?= "{$root}{$cate}/{$base}/{$name}" ?>">
+						<span class="<?= $bold ?>"><?= $name ?></span>
+					</a>
+					<?php
+					if(!$bold ){
+						continue;
+					}
+					?>
+					<ul>
+						<?php foreach( glob("{$path}/{$cate}/*") as $path ): ?>
+						<?php
+						$file = basename($path,'.php');
+						$bold = $file === $args[3] ? 'bold': '';
+						?>
+						<li>
+							<a href="<?= "{$root}{$cate}/{$base}/{$name}/{$file}" ?>">
+								<span class="<?= $bold ?>">
+									<?= $file ?>
+								</span>
+							</a>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+		</li>
+	<?php endforeach; ?>
+	</ul>
+</section>
