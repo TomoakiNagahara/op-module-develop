@@ -1,0 +1,42 @@
+
+/** op-module-develop:/webpack/breadcrumbs.css
+ *
+ * @created   2024-02-06
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/* Bread crumbs */
+#develop .breadcrumbs > span:after {
+	margin-left:  0.5em;
+	margin-right: 0.5em;
+	content: ">";
+}
+
+#develop .breadcrumbs > section.crumbs:before {
+	margin-right: 0.5em;
+	content: "[";
+}
+
+#develop .breadcrumbs > section.crumbs:after {
+	margin-left:  0.5em;
+	content: "]";
+}
+
+#develop .breadcrumbs > section.crumbs > a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#develop .breadcrumbs > section.crumbs > a:hover {
+	text-decoration: none;
+}
+
+#develop .breadcrumbs > section.crumbs > a:not(:last-child):after,
+#develop .breadcrumbs > section.crumbs > span:not(:last-child):after {
+	margin-left:  0.25em;
+	margin-right: 0.25em;
+	content: "|";
+}
