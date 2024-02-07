@@ -57,9 +57,10 @@ if(!$cate ){
 					}
 					?>
 					<ul>
-						<?php foreach( glob("{$path}/{$cate}/*") as $path ): ?>
+						<?php $ext = ($cate === 'reference') ? 'md': 'php'; ?>
+						<?php foreach( glob("{$path}/{$cate}/*.{$ext}") as $path ): ?>
 						<?php
-						$file = basename($path,'.php');
+						$file = basename($path, ".{$ext}");
 						$bold = $file === ($args[3] ?? null) ? 'bold': '';
 						?>
 						<li>
