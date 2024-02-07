@@ -33,7 +33,7 @@ if(!$cate ){
 	<?php foreach(['unit','layout','module'] as $base): ?>
 		<li>
 			<?php
-			$bold = $base === $args[1] ? 'bold': '';
+			$bold = $base === ($args[1] ?? null) ? 'bold': '';
 			?>
 			<span class="<?= $bold ?>"><?= $base ?></span>
 			<ul>
@@ -46,7 +46,7 @@ if(!$cate ){
 				?>
 				<li>
 					<?php
-					$bold = $name === $args[2] ? 'bold': '';
+					$bold = $name === ($args[2] ?? null) ? 'bold': '';
 					?>
 					<a href="<?= "{$root}{$cate}/{$base}/{$name}" ?>">
 						<span class="<?= $bold ?>"><?= $name ?></span>
@@ -60,7 +60,7 @@ if(!$cate ){
 						<?php foreach( glob("{$path}/{$cate}/*") as $path ): ?>
 						<?php
 						$file = basename($path,'.php');
-						$bold = $file === $args[3] ? 'bold': '';
+						$bold = $file === ($args[3] ?? null) ? 'bold': '';
 						?>
 						<li>
 							<a href="<?= "{$root}{$cate}/{$base}/{$name}/{$file}" ?>">
