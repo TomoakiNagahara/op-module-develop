@@ -1,5 +1,5 @@
 
-/** op-module-develop:/menu.css
+/** op-module-develop:/webpack/menu.css
  *
  * @created    2023-01-30
  * @version    1.0
@@ -20,4 +20,24 @@
 			cursor: pointer;
 		}
 	}
+}
+
+/* Menu block */
+section.menu > span:first-child:before {
+	margin-right:  0.3em;
+	content: "[";
+	color: var(--color-text);
+}
+
+section.menu > span:last-child:after {
+	margin-left:  0.3em;
+	content: "]";
+	color: var(--color-text);
+}
+
+/* Menu separator */
+section.menu > span:not(:last-child):after {
+	margin-left:  0.3em;
+	content: "|";
+	color: var(--color-text);
 }
