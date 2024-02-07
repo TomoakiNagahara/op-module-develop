@@ -1,5 +1,5 @@
 
-/** op-module-develop:/develop.css
+/** op-module-develop:/webpack/develop.css
  *
  * @created   2018-11-01
  * @version   1.0
@@ -7,56 +7,6 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-
-/* Menu block */
-section.menu > span:first-child:before {
-	margin-right:  0.3em;
-	content: "[";
-}
-
-section.menu > span:last-child:after {
-	margin-left:  0.3em;
-	content: "]";
-}
-
-/* Menu separator */
-section.menu > span:not(:last-child):after {
-	margin-left:  0.3em;
-	content: "|";
-}
-
-/* Bread crumbs */
-#develop .breadcrumbs > span:after {
-	margin-left:  0.5em;
-	margin-right: 0.5em;
-	content: ">";
-}
-
-#develop .breadcrumbs > section.crumbs:before {
-	margin-right: 0.5em;
-	content: "[";
-}
-
-#develop .breadcrumbs > section.crumbs:after {
-	margin-left:  0.5em;
-	content: "]";
-}
-
-#develop .breadcrumbs > section.crumbs > a {
-	cursor: pointer;
-	text-decoration: underline;
-}
-
-#develop .breadcrumbs > section.crumbs > a:hover {
-	text-decoration: none;
-}
-
-#develop .breadcrumbs > section.crumbs > a:not(:last-child):after,
-#develop .breadcrumbs > section.crumbs > span:not(:last-child):after {
-	margin-left:  0.25em;
-	margin-right: 0.25em;
-	content: "|";
-}
 
 #develop .testcase {
 	_border: 1px solid var(--op-color-border);
@@ -117,8 +67,10 @@ h1:first-child > img {
     display: none;
 }
 
+/*
 h1:first-child:before {
     content: url(https://user-images.githubusercontent.com/1668339/72398593-cb0d1900-3786-11ea-863c-418ff8d48f43.png);
     vertical-align: middle;
     margin-right:  0.5rem;
 }
+*/
