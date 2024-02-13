@@ -17,7 +17,7 @@ namespace OP;
 //	...
 $args = OP()->Router()->Args();
 $cate = $args[0] ?? null;
-$unit = $args[1] ?? null;
+$meta = $args[1] ?? null;
 $name = $args[2] ?? null;
 $file = $args[3] ?? null;
 
@@ -48,8 +48,17 @@ $file = $args[3] ?? null;
 			}
 
 			//	...
-			if( $file ){
-				$path = "{$unit}:/{$name}/{$cate}/{$file}.{$ext}";
+			if( $meta === 'core' ){
+				$path = "{$meta}:/{$cate}/{$name}.{$ext}";
+			}else if( $file ?? null ){
+				$path = "{$meta}:/{$name}/{$cate}/{$file}.{$ext}";
+			}else{
+				$path = false;
+			}
+
+			//	...
+			if( $path ){
+				//	...
 				if( $ext === 'md' ){
 					OP()->Markdown($path);
 				}else{
