@@ -1,0 +1,36 @@
+<?php
+/** op-module-develop:/layout/menu/left-file.phtml
+ *
+ * @created   2024-02-07
+ * @version   1.0
+ * @package   op-module-develop
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+/** namespace
+ *
+ */
+namespace OP\MODULE\DEVELOP;
+
+/* @var $args array   */
+/* @var $root string  */
+/* @var $meta string  */
+/* @var $name string  */
+/* @var $cate string  */
+
+?>
+<ul>
+	<?php foreach( GetFileNameList($meta, $name) as $file ): ?>
+	<?php
+	$bold = $file === ($args[3] ?? null) ? 'bold': '';
+	?>
+	<li>
+		<a href="<?= "{$root}{$cate}/{$meta}/{$name}/{$file}" ?>">
+			<span class="<?= $bold ?>">
+				<?= $file ?>
+			</span>
+		</a>
+	</li>
+	<?php endforeach; ?>
+</ul>
