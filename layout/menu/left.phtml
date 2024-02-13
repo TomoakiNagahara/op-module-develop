@@ -1,5 +1,5 @@
 <?php
-/** op-module-develop:/layout/menu/top.phtml
+/** op-module-develop:/layout/menu/left.phtml
  *
  * @created   2024-02-05
  * @version   1.0
@@ -11,67 +11,43 @@
 /** namespace
  *
  */
-namespace OP;
+namespace OP\MODULE\DEVELOP;
 
 //	...
 $root = OP()->MetaPath('develop:/', true);
 $args = OP()->Router()->Args();
 $cate = $args[0] ?? null;
 /*
-$base = $args[1] ?? null;
+$meta = $args[1] ?? null;
 $name = $args[2] ?? null;
 $file = $args[3] ?? null;
 */
 
 //	...
-if(!$cate ){
+if(!$cate or $cate === 'phpinfo' ){
 	return;
 }
+
 ?>
 <section class="">
 	<ul>
-	<?php foreach(['unit','layout','module'] as $base): ?>
+	<?php foreach(['core','unit','layout','module','webpack'] as $meta): ?>
 		<li>
-			<?php
-			$bold = $base === ($args[1] ?? null) ? 'bold': '';
-			?>
-			<span class="<?= $bold ?>"><?= $base ?></span>
+			<span class="<?= $meta === ($args[1] ?? null) ? 'bold': '' ?>">
+				<?= $meta ?>
+			</span>
 			<ul>
-			<?php foreach(glob(OP()->MetaPath("{$base}:/").'*') as $path): ?>
-				<?php
-				if( file_exists("{$path}/{$cate}/") === false ){
-					continue;
-				}
-				$name = basename($path);
-				?>
+			<?php foreach( GetUnitNameList($meta) as $name): ?>
 				<li>
-					<?php
-					$bold = $name === ($args[2] ?? null) ? 'bold': '';
-					?>
-					<a href="<?= "{$root}{$cate}/{$base}/{$name}" ?>">
-						<span class="<?= $bold ?>"><?= $name ?></span>
+					<a href="<?= "{$root}{$cate}/{$meta}/{$name}" ?>">
+						<span class="<?= $name === ($args[2] ?? null) ? 'bold': '' ?>"><?= $name ?></span>
 					</a>
 					<?php
-					if(!$bold ){
+					if( $name !== ($args[2] ?? null) ){
 						continue;
 					}
 					?>
-					<ul>
-						<?php $ext = ($cate === 'reference') ? 'md': 'php'; ?>
-						<?php foreach( glob("{$path}/{$cate}/*.{$ext}") as $path ): ?>
-						<?php
-						$file = basename($path, ".{$ext}");
-						$bold = $file === ($args[3] ?? null) ? 'bold': '';
-						?>
-						<li>
-							<a href="<?= "{$root}{$cate}/{$base}/{$name}/{$file}" ?>">
-								<span class="<?= $bold ?>">
-									<?= $file ?>
-								</span>
-							</a>
-						</li>
-						<?php endforeach; ?>
-					</ul>
+					<?php include(__DIR__.'/left-file.phtml') ?>
 				</li>
 			<?php endforeach; ?>
 			</ul>
@@ -79,3 +55,47 @@ if(!$cate ){
 	<?php endforeach; ?>
 	</ul>
 </section>
+<?php
+
+/**
+ *
+ */
+function GetUnitNameList(string $meta){
+	//	...
+	if( $meta == 'core' ){
+		return GetFileNameList($meta, '');
+	}
+
+	//	...
+	$list = [];
+	$path = OP()->MetaPath("{$meta}:/");
+	$cate = OP()->Router()->Args()[0];
+
+	//	...
+	foreach( glob($path . '*') as $path ){
+		//	...
+		if( file_exists("{$path}/{$cate}/") === false ){
+			continue;
+		}
+
+		//	...
+		$list[] = basename($path);
+	}
+
+	//	...
+	return $list;
+}
+
+/**
+ *
+ */
+function GetFileNameList(string $meta, string $name){
+	$list = [];
+	$cate = OP()->Router()->Args()[0];
+	$path = OP()->MetaPath("{$meta}:/$name");
+	$ext  = ($cate === 'reference') ? 'md': 'php';
+	foreach( glob("{$path}/{$cate}/*.{$ext}") as $path ){
+		$list[] = basename($path, ".{$ext}");
+	}
+	return $list;
+}
