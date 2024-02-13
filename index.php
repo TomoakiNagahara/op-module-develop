@@ -62,9 +62,8 @@ RootPath('develop', dirname(Unit('Router')->EndPoint()));
 //	Change of Layout.
 $layout = OP()->Config('layout');
 $layout['name'] = OP()->Config('develop')['layout'] ?? 'flexbox';
-foreach(['top','left'] as $position ){
-	$layout['path']['menu'][$position] = realpath("./layout/menu/{$position}.phtml");
-}
+$layout['path']['menu']['top']  = realpath("./layout/menu/top.phtml");
+$layout['path']['menu']['left'] = realpath("./layout/menu/left.phtml");
 OP()->Config('layout', $layout);
 
 //	Change of Title.
