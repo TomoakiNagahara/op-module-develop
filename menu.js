@@ -1,5 +1,5 @@
 
-/** op-module-develop:/menu.js
+/** op-module-develop:/webpack/menu.js
  *
  * @created    2023-01-30
  * @version    1.0
