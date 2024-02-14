@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 		//	..
 		document.querySelectorAll('div.markdown').forEach( async function(code){
 			//	Get HTML from parsed markdown.
-			let html = marked.parse(code.innerText);
+			let html = marked.parse(code.innerHTML);
 			//	Remove LF code.
 			while( html.search(/>\n/) !== -1 ){
 				html = html.replace(">\n",'>');
