@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', async function(){
 			while( html.search(/>\n/) !== -1 ){
 				html = html.replace(">\n",'>');
 			}
+			//	Replace to amp. Maybe, This is marked.parse() missing.
+			while( html.search(/&amp;/) !== -1 ){
+				html = html.replace("&amp;",'&');
+			}
 			//	Replace to HTML.
 			code.innerHTML = html;
 		});
