@@ -57,7 +57,7 @@ if(!$cate or $cate === 'phpinfo' ){
 </section>
 <?php
 
-/**
+/** Get unit name list.
  *
  */
 function GetUnitNameList(string $meta){
@@ -86,7 +86,7 @@ function GetUnitNameList(string $meta){
 	return $list;
 }
 
-/**
+/** Get file name list.
  *
  */
 function GetFileNameList(string $meta, string $name){
@@ -95,7 +95,21 @@ function GetFileNameList(string $meta, string $name){
 	$path = OP()->MetaPath("{$meta}:/$name");
 	$ext  = ($cate === 'reference') ? 'md': 'php';
 	foreach( glob("{$path}/{$cate}/*.{$ext}") as $path ){
-		$list[] = basename($path, ".{$ext}");
+		//	foo.bar.php --> foo.bar
+		$name = basename($path, ".{$ext}");
+
+		//	Hidden files.
+		if( $name[0] === '.' or $name[0] === '_' ){
+			continue;
+		}
+
+		//	File name are foo.bar.php is not display.
+		if( strpos($name, '.') ){
+			continue;
+		}
+
+		//	...
+		$list[] = $name;
 	}
 	return $list;
 }
