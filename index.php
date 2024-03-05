@@ -59,7 +59,7 @@ if( Env::isShell() ){
 //	...
 RootPath('develop', dirname(Unit('Router')->EndPoint()));
 
-//	Change of Layout.
+//	Change of Layout. This feature depends on op-layout-flexbox.
 $layout = OP()->Config('layout');
 $layout['name'] = OP()->Config('develop')['layout'] ?? 'flexbox';
 $layout['path']['menu']['top']  = realpath("./layout/menu/top.phtml");
