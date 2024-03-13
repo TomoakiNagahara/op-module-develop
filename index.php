@@ -67,8 +67,9 @@ $layout['path']['menu']['left'] = realpath("./layout/menu/left.phtml");
 OP()->Config('layout', $layout);
 
 //	Change of Title.
+$title = "Develop";
 $html = OP()->Config('html');
-$html['head']['title'] = "Develop | {$html['head']['title']}";
+$html['head']['title'] = ($html['head']['title'] ?? null) ? "{$title} | {$html['head']['title']}": $title;
 OP()->Config('html', $html);
 
 //	...
