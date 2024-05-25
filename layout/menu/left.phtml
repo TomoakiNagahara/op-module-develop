@@ -67,6 +67,12 @@ function GetUnitNameList(string $meta){
 	}
 
 	//	...
+	$roots = \OP\RootPath();
+	if( empty($roots[$meta]) ){
+		return [];
+	}
+
+	//	...
 	$list = [];
 	$path = OP()->MetaPath("{$meta}:/");
 	$cate = OP()->Router()->Args()[0];
