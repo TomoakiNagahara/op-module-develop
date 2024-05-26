@@ -80,13 +80,13 @@ $file = $args[3] ?? null;
 //	...
 OP()->WebPack()->Auto('./webpack/markdown.*');
 //	...
-$src = OP()->Env()->isLocalhost() ? OP()->MetaPath('develop:/vender/marked.js',true):'//cdn.jsdelivr.net/npm/marked/marked.min.js';
+$src = '//cdn.jsdelivr.net/npm/marked/marked.min.js';
 ?>
 <script src="<?= $src ?>"></script>
 
 <!-- Syntax Highlight -->
 <?php
-$src = OP()->Env()->isLocalhost() ? OP()->MetaPath('develop:/vender/highlight.js',true):'//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js';
+$src = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js';
 ?>
 <script src="<?= $src ?>"></script>
 <!--
