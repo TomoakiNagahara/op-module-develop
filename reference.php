@@ -64,5 +64,8 @@ switch( $meta = $args[1] ?? '' ){
 
 //	...
 if( $path ?? null ){
-	OP::Markdown($path.'.md', false);
+	$path = OP::MetaPath($path.'.md');
+	echo '<div class="markdown">';
+	echo file_get_contents($path);
+	echo '</div>';
 }
