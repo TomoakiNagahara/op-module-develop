@@ -66,3 +66,4 @@ OP::Template('index.phtml');
 OP::Unit('WebPack')->Auto('menu.js');
 OP::Unit('WebPack')->Auto('menu.css');
 OP::Unit('WebPack')->Auto('develop.css');
+OP::Unit('WebPack')->Auto("asset:/webpack/css/");
