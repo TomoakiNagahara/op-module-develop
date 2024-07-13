@@ -16,3 +16,5 @@ document.addEventListener('DOMContentLoaded', function(){
 		});
 	});
 });
+//	...
+console.log('develop:/webpack/menu.js');
