@@ -15,7 +15,7 @@ namespace OP;
 
 ?>
 <section class="menu">
-	<?php foreach(['phpinfo','admin','selftest','testcase','reference'] as $key): ?>
+	<?php foreach(['phpinfo','admin','selftest','testcase','sandbox','reference'] as $key): ?>
 	<span><a href="<?= OP()->MetaPath("develop:/{$key}/", true) ?>"><?= $key ?></a></span>
 	<?php endforeach; ?>
 </section>
