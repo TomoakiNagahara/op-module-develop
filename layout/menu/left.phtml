@@ -31,7 +31,7 @@ if(!$cate or $cate === 'phpinfo' ){
 ?>
 <section class="">
 	<ul>
-	<?php foreach(['core','unit','layout','module','webpack'] as $meta): ?>
+	<?php foreach(['app','core','unit','layout','module','webpack'] as $meta): ?>
 		<li>
 			<span class="<?= $meta === ($args[1] ?? null) ? 'bold': '' ?>">
 				<?= $meta ?>
@@ -61,6 +61,11 @@ if(!$cate or $cate === 'phpinfo' ){
  *
  */
 function GetUnitNameList(string $meta){
+	//	...
+	if( $meta == 'app' ){
+		return GetFileNameList('asset', '');
+	}
+
 	//	...
 	if( $meta == 'core' ){
 		return GetFileNameList($meta, '');
