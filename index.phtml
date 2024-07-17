@@ -49,6 +49,9 @@ $file = $args[3] ?? null;
 			}
 
 			//	...
+			if( $meta === 'app' ){
+				$path = "asset:/{$cate}/{$name}.{$ext}";
+			}else
 			if( $meta === 'core' ){
 				$path = "{$meta}:/{$cate}/{$name}.{$ext}";
 			}else if( $file ?? null ){
