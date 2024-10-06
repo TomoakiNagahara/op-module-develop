@@ -55,7 +55,7 @@ $file = $args[3] ?? null;
 			if( $meta === 'core' ){
 				$path = "{$meta}:/{$cate}/{$name}.{$ext}";
 			}else if( $file ?? null ){
-				$path = "{$meta}:/{$name}/{$cate}/{$file}.{$ext}";
+				$path = "asset:/{$meta}/{$name}/{$cate}/{$file}.{$ext}";
 			}else{
 				$path = false;
 			}
