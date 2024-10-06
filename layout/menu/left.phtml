@@ -71,15 +71,17 @@ function GetUnitNameList(string $meta){
 		return GetFileNameList($meta, '');
 	}
 
+	/*
 	//	...
 	$roots = \OP\RootPath();
 	if( empty($roots[$meta]) ){
 		return [];
 	}
+	*/
 
 	//	...
 	$list = [];
-	$path = OP()->MetaPath("{$meta}:/");
+	$path = OP()->MetaPath("asset:/{$meta}/");
 	$cate = OP()->Router()->Args()[0];
 
 	//	...
@@ -103,7 +105,7 @@ function GetUnitNameList(string $meta){
 function GetFileNameList(string $meta, string $name){
 	$list = [];
 	$cate = OP()->Router()->Args()[0];
-	$path = OP()->MetaPath("{$meta}:/$name");
+	$path = OP()->MetaPath("asset:/{$meta}/{$name}");
 	$ext  = ($cate === 'reference') ? 'md': 'php';
 	foreach( glob("{$path}/{$cate}/*.{$ext}") as $path ){
 		//	foo.bar.php --> foo.bar
