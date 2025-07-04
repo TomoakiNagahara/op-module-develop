@@ -40,7 +40,7 @@ function GetKindList() : array {
 */
 
 //	...
-if(!Env::isAdmin() ){
+if(!OP::isAdmin() ){
 	echo $_SERVER['REMOTE_ADDR'];
 	return;
 };
@@ -57,7 +57,7 @@ if( Env::isShell() ){
 */
 
 //	...
-RootPath('develop', dirname(Unit('Router')->EndPoint()));
+RootPath('develop', dirname(OP::Unit()->Router()->EndPoint()));
 
 //	Change of Layout. This feature depends on op-layout-flexbox.
 $layout = OP()->Config('layout');
