@@ -74,5 +74,5 @@ OP()->Config('html', $html);
 
 //	...
 OP()->Template('index.phtml');
-OP()->Unit('WebPack')->Auto('webpack');
-OP()->Unit('WebPack')->Auto("asset:/webpack/");
+OP()->Unit()->WebPack()->Auto('webpack');
+OP()->Unit()->WebPack()->Auto("asset:/webpack/");
