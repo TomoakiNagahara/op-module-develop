@@ -14,7 +14,7 @@
 namespace OP\MODULE\DEVELOP;
 
 //	...
-$root = OP()->MetaPath('develop:/', true);
+$root = OP()->URL('develop:/');
 $args = OP()->Unit()->Router()->Args();
 $cate = $args[0] ?? null;
 /*
@@ -81,7 +81,7 @@ function GetUnitNameList(string $meta){
 
 	//	...
 	$list = [];
-	$path = OP()->MetaPath("asset:/{$meta}/");
+	$path = OP()->Path("asset:/{$meta}/");
 	$cate = OP()->Unit()->Router()->Args()[0];
 
 	//	...
@@ -105,7 +105,7 @@ function GetUnitNameList(string $meta){
 function GetFileNameList(string $meta, string $name){
 	$list = [];
 	$cate = OP()->Unit()->Router()->Args()[0];
-	$path = OP()->MetaPath("asset:/{$meta}/{$name}");
+	$path = OP()->Path("asset:/{$meta}/{$name}");
 	$ext  = ($cate === 'reference') ? 'md': 'php';
 	foreach( glob("{$path}/{$cate}/*.{$ext}") as $path ){
 		//	foo.bar.php --> foo.bar
