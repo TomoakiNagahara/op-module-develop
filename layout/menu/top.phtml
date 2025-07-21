@@ -13,9 +13,17 @@
  */
 namespace OP;
 
+//	...
+$list = ['phpinfo','admin','selftest','testcase','sandbox','reference'];
+
+//	...
+if( file_exists( OP::Path('asset:/module/tutorial') ) ){
+	$list[] = 'tutorial';
+}
+
 ?>
 <section class="menu">
-	<?php foreach(['phpinfo','admin','selftest','testcase','sandbox','reference'] as $key): ?>
+	<?php foreach( $list as $key ): ?>
 	<span><a href="<?= OP()->URL("develop:/{$key}/") ?>"><?= $key ?></a></span>
 	<?php endforeach; ?>
 </section>
