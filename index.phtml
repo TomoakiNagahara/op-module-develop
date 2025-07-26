@@ -68,9 +68,13 @@ $file = $args[3] ?? null;
 				}else{
 					OP()->Template($path);
 				}
-			}else{
-				OP()->Template('index.html');
 			}
+
+			//	...
+			if( empty( OP()->Unit()->Router()->Args() ) ){
+				OP()->Template('tutorial.phtml');
+			}
+
 			?>
 			</div>
 		</div>
