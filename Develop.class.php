@@ -26,5 +26,5 @@ namespace OP\MODULE;
  */
 class Develop
 {
-
+	use \OP\OP_CORE, \OP\OP_CI;
 }
