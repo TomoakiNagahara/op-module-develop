@@ -64,7 +64,9 @@ $file = $args[3] ?? null;
 			if( $path ){
 				//	...
 				if( $ext === 'md' ){
-					OP()->Markdown($path);
+					$path = OP()->Path($path);
+					$text = file_get_contents($path);
+					OP()->Html($text, 'div.markdown');
 				}else{
 					OP()->Template($path);
 				}
