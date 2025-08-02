@@ -44,6 +44,10 @@ $file = $args[3] ?? null;
 					$ext = 'php';
 					break;
 
+				case 'tutorial':
+					OP()->Template('tutorial.phtml');
+					break;
+
 				//	...
 				default:
 			}
@@ -70,11 +74,6 @@ $file = $args[3] ?? null;
 				}else{
 					OP()->Template($path);
 				}
-			}
-
-			//	...
-			if( empty( OP()->Unit()->Router()->Args() ) ){
-				OP()->Template('tutorial.phtml');
 			}
 
 			?>
