@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 	//	Apply markdown
 	if( typeof marked !== 'undefined' ){
 		//	..
-		document.querySelectorAll('div.markdown').forEach( async function(code){
+		document.querySelectorAll('.markdown').forEach( async function(code){
 			//	Get HTML from parsed markdown.
 			let html = marked.parse(code.innerHTML);
 			//	Remove LF code.
