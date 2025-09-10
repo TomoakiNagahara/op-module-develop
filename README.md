@@ -1,6 +1,19 @@
 op-module-develop
 ===
 
-# What is this?
+# Markdown
 
- This module is for developers.
+ * develop:/vender/marked.js
+ * develop:/webpack/markdown.js
+ * develop:/webpack/markdown.css
+
+# Syntax Highlight
+
+## JavaScript
+
+ * develop:/vender/highlight.js
+ * develop:/webpack/markdown.js
+
+## CSS
+
+ * asset:/webpack/css/syntax.css
