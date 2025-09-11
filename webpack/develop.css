@@ -16,8 +16,8 @@
 #develop .flex {
 	display: flex;
 	/* https://developer.mozilla.org/ja/docs/Web/CSS/justify-content
-	 * start: |Å† Å† Å†    |
-	 * space: |Å†   Å†   Å†|
+	 * start: |‚ñ° ‚ñ° ‚ñ°    |
+	 * space: |‚ñ°   ‚ñ°   ‚ñ°|
 	 */
 	justify-content: space-between;
 }
