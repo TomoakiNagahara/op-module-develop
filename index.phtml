@@ -34,9 +34,11 @@ $file = $args[3] ?? null;
 					include('phpinfo.php');
 					break;
 
+				/*
 				case 'reference':
 					$ext = 'md';
 					break;
+				*/
 
 				case 'admin':
 				case 'testcase':
@@ -50,6 +52,7 @@ $file = $args[3] ?? null;
 
 				//	...
 				default:
+					D($cate);
 			}
 
 			//	...
