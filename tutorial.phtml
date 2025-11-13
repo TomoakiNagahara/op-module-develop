@@ -5,11 +5,34 @@
 		A tutorial is a method of transferring knowledge, often interactive, that teaches by example and practice.
 		You can download and install the tutorial by entering the following command.
 	</p>
+	<!--
 	<pre><code>php app.php _develop/git command=submodule/add type=module name=tutorial</code></pre>
 	<p>
 		You can also install it directly using Git commands without using the framework feature.
 	</p>
 	<pre><code>git submodule add https://github.com/TomoakiNagahara/op-module-tutorial.git asset/module/tutorial</code></pre>
+	 -->
+	<ol>
+		<li>
+			Move to the Git root: <br/>
+			<code>cd <?= OP()->Path('git:/') ?></code>
+		</li>
+		<li>
+			Enter the following command to add a tutorial submodule: <br/>
+			<code>git submodule add https://github.com/onepiece-framework/op-module-tutorial.git asset/module/tutorial</code>
+		</li>
+		<li>
+			Move to the develop directory: <br/>
+			<code>cd <?= __DIR__ ?></code>
+		</li>
+		<li>
+			Create an alias with the following command: <br/>
+			<code>ln -s ../tutorial/content/ tutorial</code>
+		</li>
+		<li>
+			Once you've completed the above steps, reload this page.
+		</li>
+	</ol>
 </section>
 <section data-translation="true">
 	<h2>CI/CD</h2>
