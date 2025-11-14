@@ -47,7 +47,8 @@ $file = $args[3] ?? null;
 					break;
 
 				case 'tutorial':
-					OP()->Template('tutorial.phtml');
+				case 'reference':
+					OP()->Template('tutorial.phtml', ['name'=>$cate]);
 					break;
 
 				//	...
