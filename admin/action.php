@@ -5,7 +5,7 @@
  * @copied    2020-08-25   Copy from op-module-develop:/selftest/action.php
  * @version   1.0
  * @package   op-module-develop
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @author    Tomoaki Nagahara
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
