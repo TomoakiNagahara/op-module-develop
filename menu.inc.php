@@ -14,7 +14,7 @@
 namespace OP;
 
 //	Used by phpinfo.php.
-if( $_GET['raw'] ?? null ){
+if( OP()->Request('raw') ?? null ){
 	return;
 }
 
