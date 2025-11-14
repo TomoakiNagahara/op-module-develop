@@ -18,14 +18,14 @@ namespace OP;
  */
 
 //	...
-if( $_GET['raw'] ?? null ){
+if( OP()->Request('raw') ?? null ){
 	OP()->Layout(false);
 	phpinfo();
 	return;
 }
 
 //  ...
-if( $_GET['session'] ?? null ){
+if( OP()->Request('session') ?? null ){
     //  ...
     $temp = [];
 
