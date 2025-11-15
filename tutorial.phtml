@@ -18,14 +18,29 @@ declare(strict_types=0);
  */
 namespace OP\DEVELOP;
 
+/* @var $name string */
+
+//	...
+OP()->Unit()->WebPack()->Auto('asset:/webpack/css/blockquote.css');
+
 ?>
-<!-- Tutorial guidance -->
-<section data-translation="true">
-	<h1>Tutorial</h1>
-	<p>
+<!-- Install guidance -->
+<section>
+	<h1><?= ucfirst($name) ?></h1>
+	<p data-translation="true">
+		<?php if( $name === 'tutorial' ):?>
 		A tutorial is a method of transferring knowledge, often interactive, that teaches by example and practice.
-		You can download and install the tutorial by entering the following command.
+		You can download and install the tutorial by entering the following command at Shell.
+		<?php else: ?>
+		A <code>reference</code> is a comprehensive collection of class and function specifications.
+		<span class="blockquote">
+		A reference is a precise, complete, and authoritative specification of functions, classes, APIs, or commands.
+		</span>
+		It does not teach you step-by-step as a tutorial does.
+		It is like a dictionary.
+		<?php endif; ?>
 	</p>
+	<h2>Installation Instructions</h2>
 	<!--
 	<pre><code>php app.php _develop/git command=submodule/add type=module name=tutorial</code></pre>
 	<p>
@@ -33,22 +48,24 @@ namespace OP\DEVELOP;
 	</p>
 	<pre><code>git submodule add https://github.com/TomoakiNagahara/op-module-tutorial.git asset/module/tutorial</code></pre>
 	 -->
-	<ol>
+	<ol data-translation="true">
+		<?php if(!file_exists( OP()->Path("asset:/module/{$name}/content/index.php") ) ): ?>
 		<li>
 			Move to the Git root: <br/>
 			<code>cd <?= OP()->Path('git:/') ?></code>
 		</li>
 		<li>
-			Enter the following command to add a tutorial submodule: <br/>
-			<code>git submodule add https://github.com/onepiece-framework/op-module-tutorial.git asset/module/tutorial</code>
+			Enter the following command to add a <code><?= $name ?></code> submodule: <br/>
+			<code>git submodule add https://github.com/onepiece-framework/op-module-<?= $name ?>.git asset/module/<?= $name ?></code>
 		</li>
+		<?php endif; ?>
 		<li>
 			Move to the develop directory: <br/>
 			<code>cd <?= __DIR__ ?></code>
 		</li>
 		<li>
 			Create an alias with the following command: <br/>
-			<code>ln -s ../tutorial/content/ tutorial</code>
+			<code>ln -s ../<?= $name ?>/content/ <?= $name ?></code>
 		</li>
 		<li>
 			Once you've completed the above steps, reload this page.
@@ -66,9 +83,9 @@ namespace OP\DEVELOP;
 	</p>
 	<pre><code>git remote set-url origin https://github.com/{your-account}/op-skeleton-2030</code></pre>
 </section>
-<?php if( file_exists( OP()->Path('asset:/module/tutorial/content/index.php') ) ): ?>
+<?php if( file_exists( OP()->Path('asset:/module/<?= $name ?>/content/index.php') ) ): ?>
 <section data-translation="true">
 	<h1>Discover more</h1>
-	<p>Start the tutorial by clicking the link to the right: <a href="<?= OP()->URL('develop:/tutorial/') ?>">Tutorial</a></p>
+	<p>Start the <?= $name ?> by clicking the link to the right: <a href="<?= OP()->URL('develop:/<?= $name ?>/') ?>"><?= ucfirst($name) ?></a></p>
 </section>
 <?php endif; ?>
