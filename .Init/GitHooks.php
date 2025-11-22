@@ -5,7 +5,7 @@
  * @version   1.0
  * @package   op-asset-model
  * @author    Tomoaki Nagahara
- * @copyright Tomoaki Nagahara All right reserved.
+ * @copyright Tomoaki Nagahara All rights reserved.
  */
 
 /**	declare
@@ -23,7 +23,7 @@ namespace OP;
  */
 if( $git_root = trim(`git rev-parse --show-superproject-working-tree 2>/dev/null`) ){
 	$git_root = realpath($git_root); // Use absolute path to ensure Git accepts a hooksPath outside the submodule.
-	$op_hooks = "{$git_root}/asset/git/hooks/";
+	$op_hooks = "{$git_root}/asset/init/hooks/";
 }else{
 	//	Fail if current repo is not a submodule.
 	echo "\nError: Git root was not found.\n\n";
