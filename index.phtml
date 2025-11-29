@@ -103,3 +103,12 @@ $src = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js';
 <!--
 <link  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet" />
  -->
+
+<!-- Translation Service -->
+<?php if( OP()->Config('execute')['translation'] ?? false ): ?>
+	<hr/>
+	<section data-t9n="true" data-t9n-locale="en:us">
+		<h1>Translation Service</h1>
+	</section>
+	<div id="op-translate-language-area"></div>
+<?php endif; ?>
