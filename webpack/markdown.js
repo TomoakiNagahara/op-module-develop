@@ -4,8 +4,8 @@
  * @created   2023-01-20
  * @version   1.0
  * @package   op-module-develop
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
- * @copyright Tomoaki Nagahara All right reserved.
+ * @author    Tomoaki Nagahara
+ * @copyright Tomoaki Nagahara All rights reserved.
  */
 
 //	...
