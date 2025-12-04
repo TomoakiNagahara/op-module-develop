@@ -1,11 +1,10 @@
 <?php
 /** op-module-develop:/menu.inc.php
  *
- * @created   ????
- * @version   1.0
+ * @created   2021-04-22
+ * @license   Apache-2.0
  * @package   op-module-develop
- * @author    Tomoaki Nagahara
- * @copyright Tomoaki Nagahara All right reserved.
+ * @copyright (C) 2021 Tomoaki Nagahara
  */
 
 /** namespace
