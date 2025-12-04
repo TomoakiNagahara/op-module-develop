@@ -2,10 +2,9 @@
 /**	op-asset-model:/.Init/GitHooks.php
  *
  * @created   2025-10-02
- * @version   1.0
+ * @license   Apache-2.0
  * @package   op-asset-model
- * @author    Tomoaki Nagahara
- * @copyright Tomoaki Nagahara All rights reserved.
+ * @copyright (C) 2025 Tomoaki Nagahara
  */
 
 /**	declare
