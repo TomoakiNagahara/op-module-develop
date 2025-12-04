@@ -17,19 +17,12 @@ declare(strict_types=1);
  */
 namespace OP;
 
-/** Detect super project root (submodule-only)
+/**	".hooks" is symbolic link
  *
  */
-if( $git_root = trim(`git rev-parse --show-superproject-working-tree 2>/dev/null`) ){
-	$git_root = realpath($git_root); // Use absolute path to ensure Git accepts a hooksPath outside the submodule.
-	$op_hooks = "{$git_root}/asset/init/hooks/";
-}else{
-	//	Fail if current repo is not a submodule.
-	echo "\nError: Git root was not found.\n\n";
-	exit(__LINE__);
-}
+$op_hooks = ".hooks";
 
-/** Check directory exists
+/**	Check directory exists
  *
  */
 if(!is_dir($op_hooks)){
