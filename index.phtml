@@ -30,7 +30,8 @@ $file = $args[3] ?? null;
 			switch( $cate ){
 				//	...
 				case 'phpinfo':
-					include('phpinfo.php');
+				case 'server':
+					include("{$cate}.php");
 					break;
 
 				/*
