@@ -50,21 +50,23 @@ OP()->Unit()->WebPack()->Auto('asset:/webpack/css/blockquote.css');
 	<ol data-translation="true">
 		<?php if(!file_exists( OP()->Path("asset:/module/{$name}/content/index.php") ) ): ?>
 		<li>
-			Move to the Git root: <br/>
-			<code>cd <?= OP()->Path('git:/') ?></code>
+			Open the following file: <code><?= OP()->Path('asset:/config/submodule/module/tutorial.php') ?></code>
 		</li>
 		<li>
-			Enter the following command to add a <code><?= $name ?></code> submodule: <br/>
-			<code>git submodule add https://github.com/onepiece-framework/op-module-<?= $name ?>.git asset/module/<?= $name ?></code>
+			Change the value of <code>skip</code> to <code>0</code> from <code>1</code>.
+		</li>
+		<li>
+			Move to the Git root: <code><?= OP()->Path('git:/') ?></code>
+		</li>
+		<li>
+			Update the ONEPIECE Framework: <code>php asset/init/update.php</code>
 		</li>
 		<?php endif; ?>
 		<li>
-			Move to the develop directory: <br/>
-			<code>cd <?= __DIR__ ?></code>
+			Move to the develop directory: <code><?= OP()->Path('asset:/module/develop/') ?></code>
 		</li>
 		<li>
-			Create an alias with the following command: <br/>
-			<code>ln -s ../<?= $name ?>/content/ <?= $name ?></code>
+			Create an alias with the following command: <code>ln -s ../<?= $name ?>/content/ <?= $name ?></code>
 		</li>
 		<li>
 			Once you've completed the above steps, reload this page.
