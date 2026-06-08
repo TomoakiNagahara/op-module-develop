@@ -40,7 +40,7 @@ function GetKindList() : array {
 
 //	...
 if(!OP::isAdmin() ){
-	echo $_SERVER['REMOTE_ADDR'];
+	echo "<span data-translate='true'>Access to this page is restricted by IP Address:</span> {$_SERVER['REMOTE_ADDR']}";
 	return;
 };
 
